@@ -1,0 +1,118 @@
+<script setup>
+import { onMounted } from 'vue';
+
+const props = defineProps({
+        belong:{
+            type: String,
+            required: true
+        },
+        coordinates:{
+            type: Array,
+            required: true
+        },
+        //其他特殊属性
+        content:{
+            type: Object,
+            default: null
+        },
+        spoil:{
+            type: Object,
+            default: null
+        },
+        description:{
+            type: String,
+            default: '没有描述'
+        },
+        markURL:{
+            type: String,
+            default: new URL('../assets/mark/vue.svg', import.meta.url).href
+        },
+        imgURL:{
+            type: String,
+            default: null
+        },
+        ne_require:{
+            type: String,
+            default: null 
+        },
+
+    })
+</script>
+
+<template>
+    <div class="popup">
+        <img :src="markURL" :alt="markURL" style="width:40px"/>
+        <div class="popup_attr">
+            <p class="belong_p"><b>所属</b>&nbsp;<a>{{ belong }}</a></p>
+            <p class="mark_xy_p"><span>X </span>{{ coordinates[0] }}&nbsp;<span>Y&nbsp;</span>{{ coordinates[0] }}</p>
+        </div>
+        <div class="mark_attribute">
+            
+            <div v-if="props.content!==null" class="content">
+                <p><b>内容:</b></p>
+                <p v-for="(value, key) in props.content" :key="key">
+                    <span>{{ key }}&nbsp;</span>
+                    <span>{{ value }}</span>
+                </p>
+            </div>
+            <div v-if="props.spoil!==null" class="spoil">
+                <p><b>战利品:</b></p>
+                <p v-for="(value, key) in props.spoil" :key="key">
+                    <span>{{ key }}&nbsp;</span>
+                    <span>{{ value }}</span>
+                </p>
+            </div>  
+            <p v-if="props.ne_require">需要：{{ ne_require }}</p>
+        </div>
+        <div class="mark_image">
+            <p v-if="props.imgURL==null" >暂无游戏中图片</p>
+            <img v-else :src="props.imgURL" alt="图片">
+        </div>
+        
+        <p><b>描述：</b>{{description}}</p>
+    </div>
+</template>
+
+<style scoped lang="scss">
+.popup{
+    .popup_attr{
+        p{
+            span{
+                font-weight: bold;
+            }
+        }
+        .belong_p{
+            position: absolute;
+            right: 5%;
+            top: 20%;
+        }
+        .mark_xy_p{
+            position: absolute;
+            right: 5%;
+            top: 5%;
+        }
+    }
+    .mark_image{
+        height: 200px;
+        border: 1px solid #888;
+        p{
+            position: absolute;
+            right: 50%;
+            top: 50%;
+            transform: translate(50%, 50%);
+            font-size: 12px;
+            
+        }
+        img{
+            width: 100%;
+            height: 100%;
+            position: relative;
+            // right: 5%;
+            // top: 50%;
+            // transform: translate(0, -50%);
+        }
+    }
+}
+
+
+</style>

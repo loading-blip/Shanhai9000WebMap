@@ -1,0 +1,21 @@
+# 任务道具
+storyItem:
+  - belong: A0
+    coordinates:
+      x: 0
+      y: 0
+    description: "剧情道具"
+
+xuanxuan:
+  - belong: A0
+    coordinates:
+      x: 0
+      y: 0
+    description: "截式宝剑"
+
+shennong:
+  - belong: A0
+    coordinates:
+      x: 0
+      y: 0
+    description: "佘毛"

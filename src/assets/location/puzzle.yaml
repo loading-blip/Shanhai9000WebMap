@@ -1,0 +1,21 @@
+# 解谜
+bell:
+  - belongs: A0
+    coordinates:
+      x: 0
+      y: 0
+    description: "编钟"
+
+xuandie:
+  - belongs: A0
+    coordinates:
+      x: 0
+      y: 0
+    description: "玄蝶解谜"
+
+zone:
+  - belongs: A0
+    coordinates:
+      x: 0
+      y: 0
+    description: "副本"

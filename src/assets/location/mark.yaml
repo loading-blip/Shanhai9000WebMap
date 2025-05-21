@@ -1,0 +1,12 @@
+enemy:
+  trainingMachine: "vue.svg"
+  boss: "vue.svg"
+  Elite: "vue.svg"
+
+explore:
+  chest: "chest.png"
+  lockedChest: "vue.svg"
+  box: "vue.svg"
+  storyEvent: "vue.svg"
+  bottle: "vue.svg"
+  mapLog: "vue.svg"

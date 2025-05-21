@@ -1,0 +1,28 @@
+# 敌对
+trainingMachine:
+  - belong: A0
+    coordinates:
+      x: 0
+      y: 0
+    description: "机械机器"
+
+# 各种卫兵 护盾生成器
+boss:
+  - belong: A0
+    coordinates:
+      x: 0
+      y: 0
+    spoil:
+      "道果": 1
+    description: "boss名称"
+
+Elite:
+  - belong: A0
+    coordinates:
+      x: 0
+      y: 0
+    spoil:
+      -  务道具": 1
+    description: "精英怪名称"
+
+# 触发时生成的各种卫兵

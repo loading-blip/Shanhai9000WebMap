@@ -1,0 +1,101 @@
+#探索
+chest:
+  - belong: A4
+    coordinates:
+      x: 3614
+      y: 4866
+    content:
+     "小型零件": 1
+     "金": 50
+    description: "一个宝箱"
+    require: ""
+  - belong: A4
+    coordinates:
+      x: 7165
+      y: 5232
+    content:
+     "虚拟穿戴装置": 1
+    description: "一个宝箱"
+    require: ""
+  - belong: A4
+    coordinates:
+      x: 7532
+      y: 5444
+    content:
+     "零件": 1
+     "金": 50
+    description: "一个宝箱"
+    require: ""
+  - belong: A4
+    coordinates:
+      x: 7532
+      y: 5444
+    content:
+     "零件": 1
+     "金": 50
+    description: "一个宝箱"
+    require: ""
+  - belong: A4
+    coordinates:
+      x: 7532
+      y: 5444
+    content:
+     "金": 50
+    description: "一个宝箱"
+    require: ""
+  - belong: A4
+    coordinates:
+      x: 7532
+      y: 5444
+    content:
+     "调息玉": 1
+     "金": 50
+    description: "一个宝箱"
+    require: ""
+
+lockedChest:
+  - belong: A4
+    coordinates:
+      x: 0
+      y: 0
+    content:
+     "gold": 100
+     "丹药催化剂": 50
+    description: "一个宝箱"
+    require: "破解三个守卫"
+
+bottle:
+  - belong: A0
+    coordinates:
+      x: 0
+      y: 0
+    content:
+     "苍砂": 100
+    description: "一个宝箱"
+    require: ""
+
+box:
+  - belong: A0
+    coordinates:
+      x: 0
+      y: 0
+    content:
+     "期刊": 1
+    description: "可破坏"
+    require: ""
+
+storyEvent:
+  - belong: A0
+    coordinates:
+      x: 0
+      y: 0
+    description: "触发什么剧情"
+    require: ""
+
+mapLog:
+  - belong: A0
+    coordinates:
+      x: 0
+      y: 0
+    description: "地图探索点"
+    require: ""

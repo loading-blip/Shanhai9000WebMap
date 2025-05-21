@@ -1,0 +1,23 @@
+{
+  "name": "nineslosmap",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "splitMap": "gdal2tiles.py -z 0-7 --profile=raster --xyz --tilesize=500 ./src/assets/maps/map.png ./src/assets/maps/maps",
+    "yaml2json": "python yamlTojson.py ./src/assets/location"
+  },
+  "dependencies": {
+    "json": "^11.0.0",
+    "leaflet": "^1.9.4",
+    "sass": "^1.89.0",
+    "vue": "^3.5.13"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.3",
+    "vite": "^6.3.5"
+  }
+}

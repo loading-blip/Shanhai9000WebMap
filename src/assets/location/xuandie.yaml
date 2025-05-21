@@ -1,0 +1,22 @@
+#玄蝶可交互物品
+hackPoint:
+  - belong: A0
+    coordinates:
+      x: 0
+      y: 0
+    description: "可开门"
+
+xuandieSwitch:
+  - belong: A0
+    coordinates:
+      x: 0
+      y: 0
+    description: "可切换箱子方向"
+
+rope:
+  - belong: A0
+    coordinates:
+      x: 0
+      y: 0
+    description: "降下绳索"
+

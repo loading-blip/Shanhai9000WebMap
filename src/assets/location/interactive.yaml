@@ -1,0 +1,53 @@
+# 可交互物品
+top:
+  - belong: A0
+    coordinates:
+      x: 0
+      y: 0
+    description: "陀螺"
+
+RadiProduct:
+  - belong: A0
+    coordinates:
+      x: 0
+      y: 0
+    description: "防辐射装置"
+
+lightSwitch:
+  - belong: A0
+    coordinates:
+      x: 0
+      y: 0
+    description: "场景灯开关"
+
+zipline:
+  - belong: A0
+    coordinates:
+      x: 0
+      y: 0
+    description: "滑索"
+
+round:
+  - belong: A0
+    coordinates:
+      x: 0
+      y: 0
+    description: "太极跳"
+    
+healthPotion:
+  - belong: A0
+    coordinates:
+      x: 0
+      y: 0
+    description: "药"
+# 场景装置 金木水火土等
+# 传送点
+transport:
+  - belong: A0
+    coordinates:
+      x: 0
+      y: 0
+    to:
+      x: 0
+      y: 0
+    description: "传送点"
