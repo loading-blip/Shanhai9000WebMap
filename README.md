@@ -1,5 +1,53 @@
-# Vue 3 + Vite
+<link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+# Shanhai 9000 Web Map
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+![Version](https://img.shields.io/badge/version-0.0.1.1-blue) | Map collection progress (0.99/26) ![Progress](https://geps.dev/progress/1)
+
+Another web version of the NineSols map.
+
+Like other web game maps, it can choose to hide markers.
+
+This map will collect:
+
+- explore (chest,lockedChest,bottle,StoryEvent,etc...)
+- NYMPH Interaction (Switch,rope,hackPoint)
+- questItem (StoryItem,etc...)
+- puzzle  (bell,NYMPH Puzzle,zone)
+- etc...
+
+## For Developer
+
+This program use  `npm 10.9.0` ,require `Python` in PATH and install `pyyaml` library
+
+If running in linx/unix ,should install `gdal-bin` library.
+
+If running windows, should use osgeo4w setup Tools.
+
+Whether you use `apt-get, brew, yum, dpkg or even opkg` - as long as `gdal2tiles.py` in PATH and runs properly, you're always right!
+
+\* Run `npm run install`  to install dependency package.
+
+\* Run `npm run updateMarker` to convert json.
+
+\* Run `npm run splitMap` to use [GDAL](https://gdal.org/en/stable/) to spilt map
+
+To make static web ,run the ablove three frist. Then `npm run build`. Target file is `dist/index.html`
+
+## For User
+
+Congratulations! if you are a user:  Double click `dist/index.html` to enjoy!
+
+## Demo
+
+`v0.0.0-video.mp4`
+
+[img](image/v0.0.1.1-video.mp4)
+
+## Current direction
+
+- [ ] Locate random types of marks locations for test
+- [ ] **Beautify UI interface**
+- [ ] Make marker icon
+- [ ] Clean up program Code
+- [ ] etc...

@@ -5,6 +5,7 @@ import { onMounted,getCurrentInstance,createApp } from 'vue';
 import { pixtoMap } from '../Tools/unitConversion.js';
 import { addmark } from '../Tools/markTools.js';
 import markDescribe from './markDescribe.vue';
+import '../assets/marker.scss'
 const imageWidth = 38400;
 const imageHeight = 12722;
 const markWidth = 40;
@@ -89,16 +90,16 @@ onMounted(()=>{
         )
         mark.addTo(map);
         mark._icon.classList.add(i);
-        mark._icon.classList.add(markdata[types][i][j]['belong']+"_area");
+        mark._icon.classList.add(markdata[types][i][j]['belong'].split("-")[0]+"_area");
       }
     }
   }
 
-
-  L.marker(pixtoMap([0,0])).addTo(map);
-  L.marker(pixtoMap([0,12722])).addTo(map);
-  L.marker(pixtoMap([38400,0])).addTo(map);
-  L.marker(pixtoMap([38400,12722])).addTo(map);
+  //四极定位
+  // L.marker(pixtoMap([0,0])).addTo(map);
+  // L.marker(pixtoMap([0,12722])).addTo(map);
+  // L.marker(pixtoMap([38400,0])).addTo(map);
+  // L.marker(pixtoMap([38400,12722])).addTo(map);
 })
 </script>
 
@@ -106,16 +107,12 @@ onMounted(()=>{
     <div id="map"></div>
 </template>
 
-<style  lang="scss">
+<style scoped lang="scss">
 #map {
   width: 96%;
   height: 50vh;
   margin:2% 2% 0 2%;
   
 }
-.A4_area{
-  img{
-    filter:drop-shadow(0 0 5px rgb(46, 46, 253));
-  }
-}
+
 </style>

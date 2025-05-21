@@ -1,16 +1,17 @@
 {
   "name": "nineslosmap",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.0.1.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
     "splitMap": "gdal2tiles.py -z 0-7 --profile=raster --xyz --tilesize=500 ./src/assets/maps/map.png ./src/assets/maps/maps",
-    "yaml2json": "python yamlTojson.py ./src/assets/location"
+    "updateMarker": "python yamlTojson.py ./src/assets/location"
   },
   "dependencies": {
+    "bootstrap": "^5.3.0-alpha1",
     "json": "^11.0.0",
     "leaflet": "^1.9.4",
     "sass": "^1.89.0",

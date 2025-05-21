@@ -20,14 +20,14 @@ lightSwitch:
       y: 0
     description: "场景灯开关"
 
-zipline:
+zipLine:
   - belong: A0
     coordinates:
       x: 0
       y: 0
     description: "滑索"
 
-round:
+jumpBall:
   - belong: A0
     coordinates:
       x: 0

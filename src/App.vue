@@ -6,24 +6,39 @@ import ControlPannel from './components/controlPannel.vue';
 <template>
   <LeafletMap />
   <ControlPannel />
+  <div id="versionBar">
+    <p>Preview Version Ver 0.0.1.1</p>
+    <p>Map collection progress (0.99/26) <img src="https://geps.dev/progress/1" alt="bar"></p>
+    
+  </div>
 </template>
 
 <script>
 
 </script>
 
-<style>
+<style lang="scss">
 #app {
   width: 100%;
   height: 100vh;
   /* transform: translate(-50%, 0); */
 
 }
+#versionBar{
+  position: absolute;
+  left: 50%;
+  bottom: 100px;
+  transform: translate(-50%,0);
+  img{
+    vertical-align: middle;
+  }
+}
 html, body {
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }
 #control_pannel{
   margin: 100px 25% 0 25%;

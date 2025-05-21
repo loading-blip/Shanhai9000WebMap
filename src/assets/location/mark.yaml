@@ -1,3 +1,4 @@
+#此文件用来记录不同标记使用的图标
 enemy:
   trainingMachine: "vue.svg"
   boss: "vue.svg"
@@ -10,3 +11,4 @@ explore:
   storyEvent: "vue.svg"
   bottle: "vue.svg"
   mapLog: "vue.svg"
+  fructification: "小道果.png"

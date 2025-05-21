@@ -8,7 +8,6 @@ chest:
      "小型零件": 1
      "金": 50
     description: "一个宝箱"
-    require: ""
   - belong: A4
     coordinates:
       x: 7165
@@ -16,7 +15,6 @@ chest:
     content:
      "虚拟穿戴装置": 1
     description: "一个宝箱"
-    require: ""
   - belong: A4
     coordinates:
       x: 7532
@@ -25,33 +23,7 @@ chest:
      "零件": 1
      "金": 50
     description: "一个宝箱"
-    require: ""
-  - belong: A4
-    coordinates:
-      x: 7532
-      y: 5444
-    content:
-     "零件": 1
-     "金": 50
-    description: "一个宝箱"
-    require: ""
-  - belong: A4
-    coordinates:
-      x: 7532
-      y: 5444
-    content:
-     "金": 50
-    description: "一个宝箱"
-    require: ""
-  - belong: A4
-    coordinates:
-      x: 7532
-      y: 5444
-    content:
-     "调息玉": 1
-     "金": 50
-    description: "一个宝箱"
-    require: ""
+
 
 lockedChest:
   - belong: A4
@@ -63,6 +35,15 @@ lockedChest:
      "丹药催化剂": 50
     description: "一个宝箱"
     require: "破解三个守卫"
+  - belong: A4
+    coordinates:
+      x: 50
+      y: 50
+    content:
+     "gold": 100
+     "丹药催化剂": 50
+    description: "Test"
+    require: "你是羿"
 
 bottle:
   - belong: A0
@@ -72,7 +53,6 @@ bottle:
     content:
      "苍砂": 100
     description: "一个宝箱"
-    require: ""
 
 box:
   - belong: A0
@@ -82,7 +62,6 @@ box:
     content:
      "期刊": 1
     description: "可破坏"
-    require: ""
 
 storyEvent:
   - belong: A0
@@ -90,7 +69,6 @@ storyEvent:
       x: 0
       y: 0
     description: "触发什么剧情"
-    require: ""
 
 mapLog:
   - belong: A0
@@ -98,4 +76,95 @@ mapLog:
       x: 0
       y: 0
     description: "地图探索点"
-    require: ""
+
+fructification:
+  - belong: A4
+    coordinates:
+      x: 3274
+      y: 4570
+    description: "道果来着"
+  - belong: A4
+    coordinates:
+      x: 4477
+      y: 6306
+    description: "大道果"
+  - belong: A5
+    coordinates:
+      x: 11102
+      y: 4333
+    description: "大道果"
+  - belong: A5
+    coordinates:
+      x: 9944
+      y: 6447
+    description: "道果"
+  - belong: A5-副本内
+    coordinates:
+      x: 12906
+      y: 5882
+    description: "道果"
+  - belong: A5
+    coordinates:
+      x: 9999
+      y: 8372
+    description: "大道果"
+
+  - belong: A2
+    coordinates:
+      x: 13844
+      y: 10673
+    description: "道果"
+
+  - belong: A1
+    coordinates:
+      x: 18594
+      y: 9306
+    description: "大道果"
+
+  - belong: A10-副本内
+    coordinates:
+      x: 33895
+      y: 4682
+    description: "道果*3"
+
+  - belong: A9
+    coordinates:
+      x: 31203
+      y: 2607
+    description: "道果"
+
+  - belong: A3
+    coordinates:
+      x: 29325
+      y: 7325
+    description: "道果"
+
+  - belong: A9
+    coordinates:
+      x: 26633
+      y: 3979
+    description: "道果"
+
+  - belong: A7
+    coordinates:
+      x: 26314
+      y: 2430
+    description: "双生道果"
+
+  - belong: A7
+    coordinates:
+      x: 18441
+      y: 6195
+    description: "大道果，副本走出后出现遗体"
+
+  - belong: A0
+    coordinates:
+      x: 19252
+      y: 6980
+    description: "道果"
+
+  - belong: A6
+    coordinates:
+      x: 13614
+      y: 7172
+    description: "道果"

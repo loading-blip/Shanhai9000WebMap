@@ -3,6 +3,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import explore_json from './assets/location/json/explore.json'
 import mark_json from './assets/location/json/mark.json'
+import 'bootstrap'
 // python gdal2tiles,pyyaml
 //
 const markdata = {
