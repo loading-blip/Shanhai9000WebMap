@@ -1,6 +1,6 @@
 # Shanhai 9000 Web Map
 
-![Version](https://img.shields.io/badge/version-0.0.1.1-blue) | Map collection progress (0.99/26) ![Progress](https://geps.dev/progress/1)
+![Version](https://img.shields.io/badge/version-0.1.0-blue) | Map collection progress (0.99/26) ![Progress](https://geps.dev/progress/1)
 
 Another web version of the NineSols map.
 
@@ -38,14 +38,14 @@ Congratulations! if you are a user:  Double click `dist/index.html` to enjoy!
 
 ## Demo
 
-`v0.0.0-video.mp4`
+`v0.1.0-video.mp4`
 
-<video src="image/v0.0.1.1-video.mp4" autoplay></video>
+<video src="image/v0.1.0-video.mp4" autoplay></video>
 
 ## Current direction
 
-- [x] Locate random types of marks locations for test
-- [ ] **Beautify UI interface**
+- [X] Locate random types of marks locations for test
+- [X] **Beautify UI interface**
 - [ ] Make marker icon
 - [ ] Clean up program Code
 - [ ] etc...

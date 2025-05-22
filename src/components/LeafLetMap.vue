@@ -49,14 +49,14 @@ onMounted(async ()=>{
     1,    // y scale系数
     0     // y offset量
   )
-  const map = L.map('map',{crs: crs,attributionControl: false});
+  const map = L.map('map',{crs: crs,attributionControl: false,zoomControl: false});
   L.tileLayer('./src/assets/maps/maps/{z}/{x}/{y}.png', {
         attribution: 'Local Map',
         noWrap: true,
         tileSize: 500,
         errorTileUrl: '',
         maxZoom: 7,
-        minZoom: 0,
+        minZoom: 0
       }).addTo(map);
   // map.attributionControl.setPrefix('');
   map.setView(pixtoMap([imageWidth/2,imageHeight/2]), 3)
@@ -115,10 +115,12 @@ onMounted(async ()=>{
 
 <style scoped lang="scss">
 #map {
-  width: 96%;
-  height: 50vh;
-  margin:2% 2% 0 2%;
+  width: 100%;
+  height: 100%;
   
+}
+.leaflet-container {
+  background-color: #f3eae1;
 }
 
 </style>
