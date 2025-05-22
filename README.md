@@ -1,5 +1,3 @@
-<link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-
 # Shanhai 9000 Web Map
 
 ![Version](https://img.shields.io/badge/version-0.0.1.1-blue) | Map collection progress (0.99/26) ![Progress](https://geps.dev/progress/1)
@@ -42,11 +40,11 @@ Congratulations! if you are a user:  Double click `dist/index.html` to enjoy!
 
 `v0.0.0-video.mp4`
 
-[img](image/v0.0.1.1-video.mp4)
+<video src="image/v0.0.1.1-video.mp4" autoplay></video>
 
 ## Current direction
 
-- [ ] Locate random types of marks locations for test
+- [x] Locate random types of marks locations for test
 - [ ] **Beautify UI interface**
 - [ ] Make marker icon
 - [ ] Clean up program Code

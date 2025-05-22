@@ -16,3 +16,17 @@ export function addmark(xy,attr){
     });
     return marker;
 }
+
+export function getImageSize(url) {
+    return new Promise(function (resolve, reject) {
+        let image = new Image();
+        image.onload = function () {
+            resolve([image.width, image.height]);
+        };
+        image.onerror = function () {
+            reject(new Error('error'));
+        };
+        image.src = url;
+    });
+}
+

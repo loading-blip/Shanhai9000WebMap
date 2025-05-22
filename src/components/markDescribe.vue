@@ -60,14 +60,14 @@ const props = defineProps({
                     <li v-for="(value, key) in props.spoil" :key="key">{{ key }}&nbsp;{{ value }}</li>
                 </ul>
             </div>  
-            <p v-if="props.ne_require">需要：{{ ne_require }}</p>
+            
         </div>
         <div class="mark_image">
             <p v-if="props.imgURL==null" >暂无游戏中图片</p>
             <img v-else :src="props.imgURL" alt="图片">
         </div>
         
-        <p class="marker_describe"><b>描述：</b>{{description}}</p>
+        <p class="marker_describe"><b>描述：</b>{{description}} <a v-if="props.ne_require"><br><b>需要：</b> {{ ne_require }}</a></p>
     </div>
 </template>
 
@@ -86,19 +86,12 @@ const props = defineProps({
                 font-weight: bold;
             }
         }
-        // .belong_p{
-        //     position: absolute;
-        //     right: 5%;
-        //     top: 20%;
-        // }
-        // .mark_xy_p{
-        //     position: absolute;
-        //     right: 5%;
-        //     top: 5%;
-        // }
     }
     .mark_attribute{
         grid-column: 1/3;
+        p{
+            margin-bottom: 0;
+        }
         ul{
             margin-top: 0;
             padding: 0;

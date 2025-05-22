@@ -3,13 +3,13 @@ import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import { onMounted,getCurrentInstance,createApp } from 'vue';
 import { pixtoMap } from '../Tools/unitConversion.js';
-import { addmark } from '../Tools/markTools.js';
+import { addmark,getImageSize } from '../Tools/markTools.js';
 import markDescribe from './markDescribe.vue';
 import '../assets/marker.scss'
 const imageWidth = 38400;
 const imageHeight = 12722;
 const markWidth = 40;
-const markHeight = 20;
+const imageScale = 1.2;
 
 //地图上显示的所有不重复图标名称 such as:['vue.svg','chest.png']
 let setMark = getCurrentInstance().appContext.config.globalProperties.$setMark;
@@ -22,19 +22,25 @@ let markImg = getCurrentInstance().appContext.config.globalProperties.$markImg;
 let iconList = {}
 
 
-// https://leafletjs.cn/reference.html#divicon
-for (let i in setMark) {
-  iconList[setMark[i]]=new L.divIcon({
-    className: 'custom-icon',
-    iconSize: [20, 20],
-    iconAnchor: [10, 10],
-    popupAnchor: [0, -10],
-    html: `<img src="${new URL(`../assets/mark/${setMark[i]}`, import.meta.url).href}" alt="${setMark[i]}" id="${setMark[i]}" style="width:${markWidth}px"/>`
-  });
-}
 
 
-onMounted(()=>{
+onMounted(async ()=>{
+
+  // https://leafletjs.cn/reference.html#divicon
+  for (let i in setMark) {
+    let url = new URL(`../assets/mark/${setMark[i]}`, import.meta.url).href
+    const imgSize = await getImageSize(url);
+    console.log(imgSize)
+    const iconSize = [markWidth, imgSize[1] * markWidth / imgSize[0]];
+    iconList[setMark[i]] = new L.divIcon({
+      className: 'custom-icon',
+      iconSize: iconSize,
+      iconAnchor: [iconSize[1] / 2, iconSize[0] / 2],
+      popupAnchor: [(markWidth * imageScale-markWidth)/2, -iconSize[1] / 2*imageScale],
+      html: `<img src="${url}" alt="${setMark[i]}" id="${setMark[i]}" style="width:${markWidth * imageScale}px"/>`
+    });
+  }
+
 
   const crs = L.CRS.Simple;
   crs.transformation = new L.Transformation(
