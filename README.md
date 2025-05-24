@@ -1,6 +1,6 @@
 # Shanhai 9000 Web Map
 
-![Version](https://img.shields.io/badge/version-0.1.0-blue) | Map collection progress (0.99/26) ![Progress](https://geps.dev/progress/1)
+![Version](https://img.shields.io/badge/version-0.1.0-blue) | Map collection progress (1/26) ![Progress](https://geps.dev/progress/1)
 
 Another web version of the NineSols map.
 
@@ -34,7 +34,7 @@ To make static web ,run the ablove three frist. Then `npm run build`. Target fil
 
 ## For User
 
-Congratulations! if you are a user:  Double click `dist/index.html` to enjoy!
+Congratulations! Jump to Releases page download. **(There are currently no releases available)**
 
 ## Demo
 
@@ -46,6 +46,12 @@ Congratulations! if you are a user:  Double click `dist/index.html` to enjoy!
 
 - [X] Locate random types of marks locations for test
 - [X] **Beautify UI interface**
-- [ ] Make marker icon
+- [ ] Make icon for each marker
 - [ ] Clean up program Code
+- [ ] Can hide individual tags and use cookies to store hidden tags ^1^
+- [ ] Perhaps CSS animations will be added
 - [ ] etc...
+
+Note:
+
+1. I'm not sure if local files can store cookies, but the AI's answer tells me that not all browsers support them by default

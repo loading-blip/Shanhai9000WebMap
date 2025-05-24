@@ -30,7 +30,6 @@ onMounted(async ()=>{
   for (let i in setMark) {
     let url = new URL(`../assets/mark/${setMark[i]}`, import.meta.url).href
     const imgSize = await getImageSize(url);
-    console.log(imgSize)
     const iconSize = [markWidth, imgSize[1] * markWidth / imgSize[0]];
     iconList[setMark[i]] = new L.divIcon({
       className: 'custom-icon',
@@ -65,19 +64,21 @@ onMounted(async ()=>{
       for (let i in markdata[types]){
       //每个类型中的mark
       for (let j=0;j<markdata[types][i].length;j++){
+        //若为true:使用自定义图标
+        let has_custom_image = Object.keys(markdata[types][i][j]).indexOf('custom-image') !== -1;
         let mark = addmark(
           [
             markdata[types][i][j]['coordinates']['x'],
             markdata[types][i][j]['coordinates']['y']
           ],
-          {'icon': iconList[markImg[i]]}
+          //处理自定义图标
+          {'icon': has_custom_image ?iconList[markdata[types][i][j]['custom-image']]:iconList[markImg[i]]},
         );
-        
         let attr = {
             belong: markdata[types][i][j]['belong'],
             coordinates: [markdata[types][i][j]['coordinates']['x'], markdata[types][i][j]['coordinates']['y']],
             description: markdata[types][i][j]['description'],
-            markURL: new URL(`../assets/mark/${markImg[i]}`, import.meta.url).href,
+            markURL: new URL(`../assets/mark/${has_custom_image ?markdata[types][i][j]['custom-image']:markImg[i]}`, import.meta.url).href,
         }
         if(types === 'explore'){
           attr = { ...attr, content:markdata[types][i][j]['content']}

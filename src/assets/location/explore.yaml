@@ -150,6 +150,7 @@ fructification:
       x: 26314
       y: 2430
     description: "双生道果"
+    custom-image: "雙生道果.png"
 
   - belong: A7
     coordinates:

@@ -3,38 +3,52 @@ import { onMounted,getCurrentInstance } from 'vue';
 import mark_json from '../assets/location/json/mark.json'
 import {ShowControlPanel} from '../Tools/windowEvent.js';
 
-    //每个图标使用的图标映射表
-    let markImg = getCurrentInstance().appContext.config.globalProperties.$markImg;
     //地图上所有标记信息，xy位置，描述等
     let markdata = getCurrentInstance().appContext.config.globalProperties.$markdata;
-    //刷新url
-    let markImg_url = {}
-    for(let i in mark_json){
-        markImg_url[i] = {}
-        for(let j in mark_json[i]){
-            markImg_url[i][j] = new URL(`../assets/mark/${mark_json[i][j]}`, import.meta.url).href
-        }
-    }
 
     //markdata处理成{'explore':['chest','lockedChest'],'enemy':[...]}
+    //顺便获取每种标记的数量
     let marksType = {};
-    for(let i in markdata){
+    let markerCount = {};
+    for (let i in markdata){
         marksType[i] = Object.keys(markdata[i]);
+        markerCount[i] = {};
+        for(let j in markdata[i]){
+            markerCount[i][j] = markdata[i][j].length;
+        }
     }
+    console.log("marker quantity",markerCount)
+    //刷新url
+    let marker_image = {}
+    for (let i in mark_json){
+        marker_image[i] = {}
+        for(let j in mark_json[i]){
+            marker_image[i][j] = new URL(`../assets/mark/${mark_json[i][j]}`, import.meta.url).href
+        }
+    }
+    //将markerCount和marker_image合并成一个对象
+    let marker_info = {}
+    for (let i in markerCount){
+        marker_info[i] ={}
+        for(let j in markerCount[i]){
+            marker_info[i][j] = [
+                marker_image[i][j],
+                markerCount[i][j]
+            ]
+        }
+    }
+    
+
 onMounted(()=>{
     const pannelDiv = document.getElementById('control_pannel');
     const handleBar = document.getElementsByClassName('right')[0];
     const mask = document.getElementsByClassName('mask')[0];
-    let pannelSize = {
-        width: pannelDiv.offsetWidth,
-        height: pannelDiv.offsetHeight
-    }
     handleBar.addEventListener('click',()=>{
         ShowControlPanel(
             pannelDiv, 
             mask,
             pannelDiv.offsetLeft > 0?'show':'hide',
-            pannelSize['width']
+            pannelDiv.offsetWidth
         );
     })
     mask.addEventListener('click',()=>{
@@ -42,12 +56,19 @@ onMounted(()=>{
             pannelDiv, 
             mask,
             'show',
-            pannelSize['width']
+            pannelDiv.offsetWidth
         );
     })
 
+    //窗口大小调整响应改变元素位置
+    window.addEventListener('resize', () => {
+        if (pannelDiv.offsetLeft < 0)
+        pannelDiv.style.left = `${-pannelDiv.offsetWidth}px`;
+    })
+
+    //初始化时隐藏
     setTimeout(()=>{
-        pannelDiv.style.left = `${-pannelSize['width']}px`;
+        pannelDiv.style.left = `${-pannelDiv.offsetWidth}px`;
     },500);
     
 })
@@ -64,28 +85,30 @@ onMounted(()=>{
                     marks[markIndex].style.display = marks[markIndex].style.display==='none'?'block':'none';
                 }
             }
+            
         }
     }
 </script>
 
 <template>
     <div id="control_pannel">
-        <div class="div_border top"></div>
-        <div class="div_border bottom"></div>
-        <div class="div_border left"></div>
-        <div class="div_border right"></div>
-        <div v-for="(kinds,type) in markImg_url" class="markOutline">
-            <p>{{ type }}</p>
+        <div v-for="(kinds,type) in marker_info" class="markGroup">
+            <p>{{ type.toUpperCase() }}</p>
             <ul>
-                <li v-for="(url,lKinds) in kinds" @click="hiddenAndShowMark(lKinds)">
-                    <img :src="url" :alt="lKinds">
-                    <a>{{ lKinds }}</a>
+                <li v-for="(info,lKinds) in kinds" @click="hiddenAndShowMark(lKinds)">
+                    <img :src="info[0]" :alt="lKinds">
+                    <a>{{ lKinds }}</a>&nbsp;
+                    <a>{{ info[1] }}</a>
                 </li>
             </ul>
         </div>
+        <div class="div_border top"></div>
+        <div class="div_border bottom"></div>
+        <div class="div_border left"></div>
+        <div class="div_border right wake_up_handle"></div>
     </div>
     <teleport to="body">
-        <div class="mask">单击隐藏</div>
+        <div class="mask"></div>
     </teleport>
 </template>
 
@@ -95,6 +118,7 @@ $out-offset: -2px;
 $border-color: #a09255;
 $border-size: 7px;
 $background-color: #24282e;
+
 .div_border{
     position: absolute;
     background: #a09255;
@@ -138,7 +162,6 @@ $background-color: #24282e;
     left: 20px;
     width: 25%;
     height: 95%;
-    text-align: center;
     color: #d6d6d6;
     background:
         linear-gradient(to bottom,$border-color 0px,$border-color $border-size,transparent 3px,transparent 100%) left top no-repeat,
@@ -152,9 +175,50 @@ $background-color: #24282e;
         linear-gradient(to left,$border-color 0px,$border-color $border-size,transparent 3px,transparent 100%) right bottom no-repeat,
 
         linear-gradient(#24282e 0 0) content-box;
-    padding: 5px;
+    padding: 5px ;
     background-size: 2rem 2rem;
-    transition: all 0.2s;
+    transition: all 0.2s ;
+
+    .markGroup:first-child{
+        margin-top: 50px;
+    }
+    .markGroup{
+    clear: both;    
+    margin-top: 20px;
+    p::after{
+        content: '\00A0';
+        display: block;
+        width: 20%;
+        height: 5px;
+        background-color: #a09255;
+        position: relative;
+    }
+    // p::before{
+    //     top: -2.5px;
+    //     left: 50%;
+    //     transform: translate(-50%,0);
+    // }
+    p::after{
+        bottom: -2.5px;
+        left: 50%;
+        transform: translate(-50%,0);
+    }
+    p{
+        font-size: 20px;
+        margin: 20px 0 20px 0;
+        text-align: center;
+    }
+    ul{
+        display: grid;
+        grid: repeat(4,40px) / repeat(2,50%);
+        padding-left: 20px;
+        li{
+            width: 100%;
+            height: 100%;
+            // grid-column: 1/3;
+        }
+    }
+}
 }
 ul {
     list-style: none;
@@ -183,14 +247,6 @@ a{
     text-decoration: none;
     color: #000;
 }
-.markOutline{
-    clear: both;
-    margin-top: 50px;
-    p{
-        font-size: 20px;
-        margin-bottom: 10px;
-    }
-}
 .mask{
     position: absolute;
     top: 0;
@@ -202,6 +258,9 @@ a{
     height: 100%;
     cursor: pointer;
     display: none;
+}
+.wake_up_handle{
+    box-shadow: 4px 0 5px rgba(0, 0, 0, 0.5);
 }
 </style>
 
