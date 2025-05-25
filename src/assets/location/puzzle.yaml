@@ -1,19 +1,19 @@
 # 解谜
-bell:
+Bell:
   - belongs: A0
     coordinates:
       x: 0
       y: 0
     description: "编钟"
 
-xuandie:
+Xuandie:
   - belongs: A0
     coordinates:
       x: 0
       y: 0
     description: "玄蝶解谜"
 
-zone:
+Zone:
   - belongs: A0
     coordinates:
       x: 0

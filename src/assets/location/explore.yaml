@@ -1,5 +1,5 @@
 #探索
-chest:
+Chest:
   - belong: A4
     coordinates:
       x: 3614
@@ -25,7 +25,7 @@ chest:
     description: "一个宝箱"
 
 
-lockedChest:
+LockedChest:
   - belong: A4
     coordinates:
       x: 0
@@ -45,7 +45,7 @@ lockedChest:
     description: "Test"
     require: "你是羿"
 
-bottle:
+Bottle:
   - belong: A0
     coordinates:
       x: 0
@@ -54,7 +54,7 @@ bottle:
      "苍砂": 100
     description: "一个宝箱"
 
-box:
+Box:
   - belong: A0
     coordinates:
       x: 0
@@ -63,21 +63,21 @@ box:
      "期刊": 1
     description: "可破坏"
 
-storyEvent:
+StoryEvent:
   - belong: A0
     coordinates:
       x: 0
       y: 0
     description: "触发什么剧情"
 
-mapLog:
+MapLog:
   - belong: A0
     coordinates:
       x: 0
       y: 0
     description: "地图探索点"
 
-fructification:
+Fructification:
   - belong: A4
     coordinates:
       x: 3274
@@ -169,3 +169,296 @@ fructification:
       x: 13614
       y: 7172
     description: "道果"
+
+RootNodes:
+  - belong: AG
+    content:
+      "纵云步": 1 
+      "扶桑号角": 1
+    coordinates:
+      x: 23502
+      y: 5282
+    description: "古树节点"
+  - belong: A3
+    coordinates:
+      x: 27064
+      y: 5930
+    description: "古树节点"
+  - belong: A3
+    coordinates:
+      x: 28003
+      y: 7247
+    description: "古树节点"
+  - belong: A10
+    coordinates:
+      x: 32309
+      y: 7481
+    description: "古树节点"
+  - belong: A10
+    content:
+      "乾坤剑": 1 
+    coordinates:
+      x: 32806
+      y: 6771
+  - belong: A10
+    coordinates:
+      x: 36328
+      y: 6904
+    description: "古树节点"
+  - belong: A10
+    coordinates:
+      x: 36328
+      y: 6904
+    description: "古树节点"
+  - belong: A10
+    coordinates:
+      x: 33841
+      y: 5463
+    description: "古树节点"
+  - belong: A10
+    coordinates:
+      x: 33841
+      y: 5463
+    description: "古树节点"
+  - belong: A10
+    coordinates:
+      x: 33841
+      y: 5463
+    description: "古树节点"
+  - belong: A10
+    coordinates:
+      x: 32941
+      y: 3980
+    description: "古树节点"
+  - belong: A10
+    coordinates:
+      x: 36944
+      y: 4348
+    description: "古树节点"
+  - belong: A9
+    coordinates:
+      x: 27451
+      y: 3147
+    description: "古树节点"
+  - belong: A9
+    coordinates:
+      x: 29858
+      y: 3479
+    description: "古树节点"
+  - belong: A9
+    coordinates:
+      x: 29858
+      y: 3479
+    description: "古树节点"
+  - belong: A9
+    coordinates:
+      x: 29490
+      y: 4453
+    description: "古树节点"
+  - belong: A9
+    coordinates:
+      x: 26914
+      y: 3874
+    description: "古树节点"
+
+  - belong: A9
+    coordinates:
+      x: 26390
+      y: 7166
+    description: "古树节点"
+
+  - belong: A11
+    coordinates:
+      x: 27479
+      y: 8150
+    description: "古树节点"
+
+  - belong: A2
+    coordinates:
+      x: 22714
+      y: 8904
+    description: "古树节点"
+
+  - belong: A1
+    coordinates:
+      x: 17638
+      y: 8272
+    description: "古树节点"
+
+  - belong: A1
+    coordinates:
+      x: 19404
+      y: 8785
+    description: "古树节点"
+
+  - belong: A1
+    coordinates:
+      x: 17574
+      y: 9162
+    description: "古树节点"
+
+  - belong: A2
+    coordinates:
+      x: 13504
+      y: 10529
+    description: "古树节点"
+
+  - belong: A2
+    coordinates:
+      x: 17440
+      y: 10363
+    description: "古树节点"
+
+  - belong: A2
+    coordinates:
+      x: 22610
+      y: 10267
+    description: "古树节点"
+
+  - belong: A2
+    coordinates:
+      x: 18486
+      y: 11106
+    description: "古树节点"
+
+  - belong: A2
+    coordinates:
+      x: 13504
+      y: 10529
+    description: "古树节点"
+
+  - belong: A2
+    coordinates:
+      x: 13504
+      y: 10529
+    description: "古树节点"
+
+  - belong: A2
+    coordinates:
+      x: 13504
+      y: 10529
+    description: "古树节点"
+  - belong: A7
+    coordinates:
+      x: 17965
+      y: 6196
+    description: "古树节点"
+  - belong: A0
+    coordinates:
+      x: 19360
+      y: 7058
+    description: "古树节点"
+  - belong: A6
+    coordinates:
+      x: 12819
+      y: 7099
+    description: "古树节点"
+  - belong: A6
+    coordinates:
+      x: 9616
+      y: 7757
+    description: "古树节点"
+  - belong: A5
+    coordinates:
+      x: 10204
+      y: 8921
+    description: "古树节点"
+  - belong: A5
+    coordinates:
+      x: 8037
+      y: 9487
+    description: "古树节点"
+  - belong: A5
+    coordinates:
+      x: 11672
+      y: 6195
+    description: "古树节点"
+  - belong: A5
+    coordinates:
+      x: 10374
+      y: 5292
+    description: "古树节点"
+  - belong: A5
+    coordinates:
+      x: 11290
+      y: 4348
+    description: "古树节点"
+  - belong: A4
+    coordinates:
+      x: 3337
+      y: 5360
+    description: "古树节点"
+  - belong: A4
+    coordinates:
+      x: 7367
+      y: 6266
+    description: "古树节点"
+  - belong: A4
+    coordinates:
+      x: 2040
+      y: 6306
+    description: "古树节点"
+  - belong: AG
+    coordinates:
+      x: 21670
+      y: 842
+    description: "古树节点"
+
+Token:
+  - belong: A11
+    content:
+      "金": 600 分解获得
+    coordinates:
+      x: 24969
+      y: 7282
+    description: "夢寐愛姆 令牌"
+    custom-image: "令牌/夢寐愛姆.png"
+  - belong: A11
+    content:
+      "金": 600 分解获得
+    coordinates:
+      x: 25558
+      y: 7041
+    description: "史陽月 令牌"
+    custom-image: "令牌/史陽月.png"
+  - belong: A9
+    content:
+      "金": 600 分解获得
+    coordinates:
+      x: 26160
+      y: 3270
+    description: "己亥 令牌"
+    custom-image: "令牌/己亥.png"
+  - belong: A9
+    content:
+      "金": 600 分解获得
+    coordinates:
+      x: 26965
+      y: 3286
+    description: "夕溥 令牌"
+    custom-image: "令牌/夕溥.png"
+  - belong: A9
+    content:
+      "金": 600 分解获得
+    coordinates:
+      x: 27448
+      y: 3450
+    description: "央凡 令牌"
+    custom-image: "令牌/央凡.png"
+  - belong: A9
+    content:
+      "金": 600 分解获得
+    coordinates:
+      x: 30508
+      y: 2998
+    description: "鄒巖 令牌"
+    custom-image: "令牌/鄒巖.png"
+  - belong: A9
+    content:
+      "金": 600 分解获得
+    coordinates:
+      x: 29809
+      y: 3078
+    description: "阿守 令牌"
+    custom-image: "令牌/阿守.png"
+

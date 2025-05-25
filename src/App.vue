@@ -21,9 +21,9 @@ onMounted(() => {
         </svg>
       </div>
       <p>Preview version 0.1.1</p>
-      <p>Map collection progress (1/26)</p>
-      <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-        <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 1%"></div>
+      <p>Map collection progress (3/28)</p>
+      <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="7.4" aria-valuemin="0" aria-valuemax="100">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 10.7%"></div>
       </div>
     </div>
 </template>

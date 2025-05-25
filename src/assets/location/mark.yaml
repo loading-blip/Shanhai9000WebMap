@@ -1,14 +1,16 @@
 #此文件用来记录不同标记使用的图标
 enemy:
-  trainingMachine: "vue.svg"
-  boss: "vue.svg"
+  TrainingMachine: "vue.svg"
+  Boss: "vue.svg"
   Elite: "vue.svg"
 
 explore:
-  chest: "chest.png"
-  lockedChest: "vue.svg"
-  box: "vue.svg"
-  storyEvent: "vue.svg"
-  bottle: "vue.svg"
-  mapLog: "vue.svg"
-  fructification: "小道果.png" 
+  Chest: "chest.png"
+  LockedChest: "vue.svg"
+  Box: "vue.svg"
+  StoryEvent: "vue.svg"
+  Bottle: "vue.svg"
+  MapLog: "vue.svg"
+  Fructification: "小道果.png" 
+  RootNodes: "古树节点.png"
+  Token: "令牌/己亥.png"
