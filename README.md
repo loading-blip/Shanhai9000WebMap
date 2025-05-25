@@ -1,6 +1,6 @@
 # Shanhai 9000 Web Map
 
-![Version](https://img.shields.io/badge/version-0.1.1-blue) | Map collection progress (1/26) ![Progress](https://geps.dev/progress/1)
+![Version](https://img.shields.io/badge/version-0.1.1-blue) | Map collection progress (3/27) ![Progress](https://geps.dev/progress/10)
 
 Another web version of the NineSols map.
 
@@ -32,6 +32,8 @@ Whether you use `apt-get, brew, yum, dpkg or even opkg` - as long as `gdal2tiles
 
 To make static web ,run the ablove three frist. Then `npm run build`. Target file is `dist/index.html`
 
+Currently, updates regarding map markers have been moved to the `Map making` branch
+
 ## For User
 
 Congratulations! Jump to Releases page download. **(There are currently no releases available)**
@@ -40,16 +42,15 @@ Congratulations! Jump to Releases page download. **(There are currently no relea
 
 `v0.1.0-video.mp4`
 
-<video src="image/v0.1.0-video.mp4" autoplay></video>
-
+[files](image/v0.1.0-video.mp4)
 ## Current direction
 
-- [X] Locate random types of marks locations for test
 - [X] **Beautify UI interface**
 - [ ] Make icon for each marker
 - [ ] Clean up program Code
 - [X] Can hide individual tags and use cookies to store hidden tags ^1^
 - [ ] Perhaps CSS animations will be added
+- [ ] **Add Wizard**
 - [ ] etc...
 
 Note:
