@@ -12,53 +12,57 @@ export function DivDraggable(element) {
     // 保存初始的transform值（保留你的居中样式）
     const initialTransform = element.style.transform;
 
-    // 添加拖动指针样式（不影响内部元素的交互）
+    // 添加拖动指针样式
     element.style.cursor = 'move';
 
-    element.addEventListener('mousedown', function(e) {
-        // 只响应左键点击
-        if (e.button !== 0) return;
-        
+    // 统一处理开始事件
+    function dragStart(e) {
+        // 鼠标左键或触控
+        if ((e.type === 'mousedown' && e.button !== 0)) return;
+
         isDragging = true;
-        
-        // 记录初始位置
-        startX = e.clientX;
-        startY = e.clientY;
-        
-        // 获取当前计算位置（考虑transform）
+
+        // 兼容触控
+        const point = e.touches ? e.touches[0] : e;
+        startX = point.clientX;
+        startY = point.clientY;
+
         const rect = element.getBoundingClientRect();
         startLeft = rect.left;
         startTop = rect.top;
-        
-        // 移除transform以启用精确拖动
-        element.style.transform = 'none';
-        
-        // 防止文本选中和默认拖拽行为
-        e.preventDefault();
-    });
 
-    document.addEventListener('mousemove', function(e) {
+        element.style.transform = 'none';
+        e.preventDefault();
+    }
+
+    // 统一处理移动事件
+    function dragMove(e) {
         if (!isDragging) return;
-        
-        // 计算移动距离
-        const dx = e.clientX - startX;
-        const dy = e.clientY - startY;
-        
-        // 应用新位置（保持原有的position: absolute）
+        const point = e.touches ? e.touches[0] : e;
+        const dx = point.clientX - startX;
+        const dy = point.clientY - startY;
         element.style.left = (startLeft + dx) + 'px';
         element.style.top = (startTop + dy) + 'px';
-    });
+    }
 
-    document.addEventListener('mouseup', function() {
+    // 统一处理结束事件
+    function dragEnd() {
         if (isDragging) {
             isDragging = false;
-            
-            // 拖动结束后可以在这里添加位置限制逻辑（如果需要）
-            // 例如确保元素不会移出视口
         }
-    });
+    }
 
-    // 双击重置位置（可选功能）
+    // 鼠标事件
+    element.addEventListener('mousedown', dragStart);
+    document.addEventListener('mousemove', dragMove);
+    document.addEventListener('mouseup', dragEnd);
+
+    // 触控事件
+    element.addEventListener('touchstart', dragStart, { passive: false });
+    document.addEventListener('touchmove', dragMove, { passive: false });
+    document.addEventListener('touchend', dragEnd);
+
+    // 双击重置位置
     element.addEventListener('dblclick', function() {
         element.style.left = '50%';
         element.style.top = '';

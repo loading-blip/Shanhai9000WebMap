@@ -1,4 +1,4 @@
-import { createApp } from 'vue'
+import { createApp,ref } from 'vue'
 // import './style.css'
 import App from './App.vue'
 import explore_json from './assets/location/json/explore.json'
@@ -49,4 +49,6 @@ const app = createApp(App)
 app.config.globalProperties.$setMark = setMark
 app.config.globalProperties.$markdata = markdata
 app.config.globalProperties.$markImg = markImg
+app.config.globalProperties.$markedMarkList = {}
+
 app.mount('#app')

@@ -1,7 +1,7 @@
 <script setup>
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
-import { onMounted,getCurrentInstance,createApp } from 'vue';
+import { onMounted,getCurrentInstance,createApp,} from 'vue';
 import { pixtoMap } from '../Tools/unitConversion.js';
 import { addmark,getImageSize } from '../Tools/markTools.js';
 import markDescribe from './markDescribe.vue';
@@ -17,6 +17,8 @@ let setMark = getCurrentInstance().appContext.config.globalProperties.$setMark;
 let markdata = getCurrentInstance().appContext.config.globalProperties.$markdata;
 //每个图标使用的图标映射表
 let markImg = getCurrentInstance().appContext.config.globalProperties.$markImg;
+//标记了已完成的图标
+let markedMarkList = getCurrentInstance().appContext.config.globalProperties.$markedMarkList;
 
 //将会使用的img列表
 let iconList = {}
@@ -79,7 +81,8 @@ onMounted(async ()=>{
             coordinates: [markdata[types][i][j]['coordinates']['x'], markdata[types][i][j]['coordinates']['y']],
             description: markdata[types][i][j]['description'],
             markURL: new URL(`../assets/mark/${has_custom_image ?markdata[types][i][j]['custom-image']:markImg[i]}`, import.meta.url).href,
-        }
+            id: markdata[types][i][j]['id']
+          }
         if(types === 'explore'){
           attr = { ...attr, content:markdata[types][i][j]['content']}
         }
@@ -91,13 +94,18 @@ onMounted(async ()=>{
         }
         //渲染标记提示中的组件
         const markContainer = document.createElement('div');
-        createApp(markDescribe, attr).mount(markContainer);
+        const innerApp = createApp(markDescribe, attr);
+        innerApp.config.globalProperties.$markedMarkList = markedMarkList;
+        innerApp.mount(markContainer) 
         mark.bindPopup(
-          markContainer,{closeButton:false,minWidth: 300, maxHeight:400 }
+          markContainer,{closeButton:false,minWidth: 300, maxHeight:400}
         )
+
         mark.addTo(map);
         mark._icon.classList.add(i);
         mark._icon.classList.add(markdata[types][i][j]['belong'].split("-")[0]+"_area");
+        mark._icon.id+=('mark_'+markdata[types][i][j]['id']);
+
       }
     }
   }
@@ -114,14 +122,28 @@ onMounted(async ()=>{
     <div id="map"></div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss">
+$out-offset: -2px;
+$border-color: #a09255;
+$border-size: 7px;
+$background-color: #24282e90;
 #map {
   width: 100%;
   height: 100%;
   
 }
 .leaflet-container {
-  background-color: #f3eae1;
+  background-color: #212326; //#f3eae1
+}
+.leaflet-popup {
+  border: none;
+  .leaflet-popup-content-wrapper{
+    border-radius: 0;
+    color: white;
+    background-color: $background-color;
+    border: 3px solid $border-color;
+  }
+    
 }
 
 </style>

@@ -1,6 +1,6 @@
 # Shanhai 9000 Web Map
 
-![Version](https://img.shields.io/badge/version-0.1.0-blue) | Map collection progress (1/26) ![Progress](https://geps.dev/progress/1)
+![Version](https://img.shields.io/badge/version-0.1.1-blue) | Map collection progress (1/26) ![Progress](https://geps.dev/progress/1)
 
 Another web version of the NineSols map.
 
@@ -48,7 +48,7 @@ Congratulations! Jump to Releases page download. **(There are currently no relea
 - [X] **Beautify UI interface**
 - [ ] Make icon for each marker
 - [ ] Clean up program Code
-- [ ] Can hide individual tags and use cookies to store hidden tags ^1^
+- [X] Can hide individual tags and use cookies to store hidden tags ^1^
 - [ ] Perhaps CSS animations will be added
 - [ ] etc...
 

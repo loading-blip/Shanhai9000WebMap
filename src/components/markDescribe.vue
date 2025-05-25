@@ -1,42 +1,58 @@
 <script setup>
-import { onMounted } from 'vue';
+import { getCurrentInstance} from 'vue';
 
 const props = defineProps({
-        belong:{
-            type: String,
-            required: true
-        },
-        coordinates:{
-            type: Array,
-            required: true
-        },
-        //其他特殊属性
-        content:{
-            type: Object,
-            default: null
-        },
-        spoil:{
-            type: Object,
-            default: null
-        },
-        description:{
-            type: String,
-            default: '没有描述'
-        },
-        markURL:{
-            type: String,
-            default: new URL('../assets/mark/vue.svg', import.meta.url).href
-        },
-        imgURL:{
-            type: String,
-            default: null
-        },
-        ne_require:{
-            type: String,
-            default: null 
-        },
+    id: {
+        type: Number,
+        required: true
+    },
+    belong: {
+        type: String,
+        required: true
+    },
+    coordinates: {
+        type: Array,
+        required: true
+    },
+    //其他特殊属性
+    content: {
+        type: Object,
+        default: null
+    },
+    spoil: {
+        type: Object,
+        default: null
+    },
+    description: {
+        type: String,
+        default: '没有描述'
+    },
+    markURL: {
+        type: String,
+        default: new URL('../assets/mark/vue.svg', import.meta.url).href
+    },
+    imgURL: {
+        type: String,
+        default: null
+    },
+    ne_require: {
+        type: String,
+        default: null
+    },
+});
 
-    })
+const markedMarkList = getCurrentInstance().appContext.config.globalProperties.$markedMarkList;
+
+function hideMark(id) {
+    // mark.value is the reactive reference to markedMarkList
+    if (Object.keys(markedMarkList).indexOf(String(id)) !== -1) {
+        delete markedMarkList[id];
+        document.getElementById('mark_' + id).style.opacity = 1;
+        return;
+    }
+    document.getElementById('mark_' + id).style.opacity = 0.3;
+    markedMarkList[id] = true;
+}
 </script>
 
 <template>
@@ -66,14 +82,17 @@ const props = defineProps({
             <p v-if="props.imgURL==null" >暂无游戏中图片</p>
             <img v-else :src="props.imgURL" alt="图片">
         </div>
-        
         <p class="marker_describe"><b>描述：</b>{{description}} <a v-if="props.ne_require"><br><b>需要：</b> {{ ne_require }}</a></p>
+        <div class="marker_hidden" @click="hideMark(props.id)">
+            <p>隐藏此标记</p>
+        </div>
     </div>
 </template>
 
 <style scoped lang="scss">
-.mark_logo{
+.marker_logo{
     display: block;
+    filter:drop-shadow(0 0 10px rgba(255, 255, 255, 0.685));
 }
 .popup{
     display: grid;
@@ -127,8 +146,15 @@ const props = defineProps({
     .marker_describe{
         grid-row: 5;
         grid-column: 1/3;
+        max-width:90%;
     }
 }
 
-
+.marker_hidden{
+    position: absolute;
+    right: 15px;
+    bottom: 5px;
+    cursor: pointer;
+    user-select: none;
+}
 </style>

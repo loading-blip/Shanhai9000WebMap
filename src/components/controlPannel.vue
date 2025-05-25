@@ -215,6 +215,7 @@ $background-color: #24282e;
         li{
             width: 100%;
             height: 100%;
+            user-select: none;
             // grid-column: 1/3;
         }
     }
