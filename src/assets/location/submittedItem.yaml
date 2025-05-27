@@ -1,0 +1,319 @@
+# 任务道具
+StoryItem:
+  - belong: A10
+    coordinates:
+      x: 33679
+      y: 3546
+    description: "姬的毛发"
+    custom-image: "剧情/姬的毛髮.png"
+  - belong: A10
+    coordinates:
+      x: 33894
+      y: 4674
+    description: "元能弹"
+    custom-image: "剧情/元能彈.png"
+  - belong: A11
+    coordinates:
+      x: 25365
+      y: 7754
+    description: "小倩相片"
+    custom-image: "剧情/小倩相片.png"
+  - belong: A1
+    coordinates:
+      x: 17961
+      y: 8256
+    description: "染血大红瑾"
+    custom-image: "剧情/染血的大紅瑾.png"
+  - belong: A1
+    coordinates:
+      x: 17058
+      y: 8917
+    description: "扶桑牌"
+    custom-image: "剧情/扶桑牌.png"
+  - belong: A1
+    coordinates:
+      x: 18793
+      y: 7040
+    description: "破损的扶桑牌 神农给的"
+    custom-image: "剧情/破損的扶桑牌.png"
+  - belong: A1
+    coordinates:
+      x: 13925
+      y: 6929
+    description: "黄龙蛇毒囊 桃花村支线出现"
+    custom-image: "剧情/黃龍蛇毒囊.png"
+  - belong: A5
+    coordinates:
+      x: 9409
+      y: 4473
+    description: "基因消除剂"
+    custom-image: "剧情/基因消除劑.png"
+  - belong: AG
+    coordinates:
+      x: 23500
+      y: 5265
+    description: "扶桑号角"
+    custom-image: "剧情/扶桑號角.png"
+  - belong: A9-副本内
+    coordinates:
+      x: 25159
+      y: 2449
+    description: "天祸血清"
+    custom-image: "剧情/天禍血清.png"
+  - belong: A9
+    coordinates:
+      x: 25996
+      y: 2432
+    description: "天梯通行证"
+    custom-image: "剧情/天梯通行牌.png"
+
+XuanXuan:
+  - belong: A0
+    coordinates:
+      x: 0
+      y: 0
+    description: "鬼方赤土"
+    custom-image: "轩轩/鬼方赤土.png"
+  - belong: A10
+    coordinates:
+      x: 34476
+      y: 5442
+    description: "棋盘"
+    custom-image: "轩轩/棋盤.png"
+  - belong: A3
+    coordinates:
+      x: 35187
+      y: 6912
+    description: "即食口粮"
+    custom-image: "轩轩/即食口糧.png"
+  - belong: A3
+    coordinates:
+      x: 32802
+      y: 6606
+    description: "不知名种子"
+    custom-image: "轩轩/不知名種子.png"
+  - belong: A11
+    coordinates:
+      x: 25848
+      y: 7036
+    description: "天道学院期刊"
+    custom-image: "轩轩/天道卷軸.png"
+  - belong: A2
+    coordinates:
+      x: 22903
+      y: 9309
+    description: "文房四宝"
+    custom-image: "轩轩/文房四寶.png"
+  - belong: A5
+    coordinates:
+      x: 11479
+      y: 4335
+    description: "截氏宝剑"
+    custom-image: "轩轩/截氏寶劍.png"
+  - belong: A5
+    coordinates:
+      x: 12902
+      y: 5864
+    description: "肥料1"
+    custom-image: "轩轩/肥料.png"
+  - belong: A9
+    coordinates:
+      x: 26784
+      y: 3867
+    description: "肥料2"
+    custom-image: "轩轩/肥料.png"
+  - belong: A4
+    coordinates:
+      x: 2333
+      y: 6280
+    description: "古唱片"
+    custom-image: "轩轩/古唱片.png"
+  - belong: A4
+    coordinates:
+      x: 7170
+      y: 5235
+    description: "虚拟穿戴装置"
+    custom-image: "轩轩/虛擬穿戴裝置.png"
+  - belong: A7
+    coordinates:
+      x: 16171
+      y: 6116
+    description: "蓬莱仙人图"
+    custom-image: "轩轩/蓬萊仙人圖.png"
+  - belong: A2
+    coordinates:
+      x: 17883
+      y: 10170
+    description: "多功能工具组"
+    custom-image: "轩轩/多功能工具組.png"
+  - belong: A2
+    coordinates:
+      x: 30885
+      y: 2608
+    description: "蓬莱食谱"
+    custom-image: "轩轩/蓬萊典藏食譜.png"
+
+ShenNong:
+  - belong: A10
+    coordinates:
+      x: 36010
+      y: 4028
+    description: "毒蛤脱衣"
+    custom-image: "神农/蛤蟆衣.png"
+  - belong: A10
+    coordinates:
+      x: 27303
+      y: 7033
+    description: "应龙金卵"
+    custom-image: "神农/應龍金卵.png"
+  - belong: A1
+    coordinates:
+      x: 18008
+      y: 8626
+    description: "雄黄"
+    custom-image: "神农/雄橙.png"
+  - belong: A0
+    coordinates:
+      x: 18708
+      y: 7038
+    description: "猪黄 卜巫给的"
+    custom-image: "神农/豬黃.png"
+  - belong: A5
+    coordinates:
+      x: 12322
+      y: 4630
+    description: "馀毛"
+    custom-image: "神农/餘毛.png"
+  - belong: A4
+    coordinates:
+      x: 2390
+      y: 5394
+    description: "天蚂蝗"
+    custom-image: "神农/天螞蛻.png"
+  - belong: A9
+    coordinates:
+      x: 26946
+      y: 3998
+    description: "臭菜"
+    custom-image: "神农/臭菜.png"
+  - belong: A9
+    coordinates:
+      x: 29054
+      y: 2464
+    description: "鳌蝎"
+    custom-image: "神农/鰲蠍.png"
+
+ChiYou:
+  - belong: A1
+    coordinates:
+      x: 16685
+      y: 9103
+    description: "断魂刃"
+    custom-image: "蚩尤/循敵鏢.png"
+  - belong: A4
+    coordinates:
+      x: 3804
+      y: 4678
+    description: "风火环"
+    custom-image: "蚩尤/風火環.png"
+
+ShanHai9000:
+  - belong: A10
+    coordinates:
+      x: 34784
+      y: 3540
+    description: "藏经石窟"
+    custom-image: "圖資晶片/藏經石窟.png"
+  - belong: A10
+    coordinates:
+      x: 33418
+      y: 6284
+    description: "农产区"
+    custom-image: "圖資晶片/農產區.png"
+  - belong: A11
+    coordinates:
+      x: 26839
+      y: 7112
+    description: "研究所"
+    custom-image: "圖資晶片/研究所.png"
+  - belong: A5
+    coordinates:
+      x: 12322
+      y: 5290
+    description: "炼丹炉"
+    custom-image: "圖資晶片/煉丹爐.png"
+  - belong: A6
+    coordinates:
+      x: 7545
+      y: 6287
+    description: "仓库区"
+    custom-image: "圖資晶片/倉庫區.png"
+  - belong: A7
+    coordinates:
+      x: 18984
+      y: 6162
+    description: "中央区"
+    custom-image: "圖資晶片/中央區.png"
+  - belong: A2
+    coordinates:
+      x: 18206
+      y: 10255
+    description: "蓄能井"
+    custom-image: "圖資晶片/蓄能井.png"
+  - belong: A2
+    coordinates:
+      x: 31241
+      y: 3149
+    description: "天人区"
+    custom-image: "圖資晶片/天人區.png"
+
+EiGong:
+  - belong: A10
+    coordinates:
+      x: 34347
+      y: 3547
+    description: "姬玉玺"
+    custom-image: "玉玺/姬王璽.png"
+  - belong: A3
+    coordinates:
+      x: 34912
+      y: 6889
+    description: "勾芒玉玺"
+    custom-image: "玉玺/勾芒王璽.png"
+  - belong: A3
+    coordinates:
+      x: 10791
+      y: 6889
+    description: "截全玉玺"
+    custom-image: "玉玺/截全王璽.png"
+  - belong: A4
+    coordinates:
+      x: 4989
+      y: 6282
+    description: "奄老玉玺"
+    custom-image: "玉玺/奄老王璽.png"
+  - belong: A7
+    coordinates:
+      x: 18443
+      y: 6181
+    description: "蚨蝶玉玺"
+    custom-image: "玉玺/蚨蝶王璽.png"
+  - belong: A2
+    coordinates:
+      x: 20744
+      y: 11097
+    description: "夸伏玉玺"
+    custom-image: "玉玺/夸伏王璽.png"
+  - belong: A9
+    coordinates:
+      x: 25544
+      y: 2426
+    description: "女娲玉玺"
+    custom-image: "玉玺/女媧王璽.png"
+  - belong: A9
+    coordinates:
+      x: 25544
+      y: 2426
+    description: "伏羲玉玺"
+    custom-image: "玉玺/伏羲王璽.png"
+

@@ -1,0 +1,221 @@
+算力元件:
+  - belong: A10
+    coordinates:
+      x: 36628
+      y: 4754
+    description: "算力元件"
+  - belong: AG
+    coordinates:
+      x: 23690
+      y: 4892
+    description: "算力元件"
+  - belong: A2
+    coordinates:
+      x: 22631
+      y: 10400
+    description: "算力元件"
+  - belong: A9
+    coordinates:
+      x: 27687
+      y: 2813
+    description: "算力元件"
+  
+玉石:
+  - belong: A10
+    coordinates:
+      x: 32941
+      y: 4283
+    description: "神手玉"
+  - belong: A10
+    coordinates:
+      x: 34273
+      y: 5616
+    description: "剑气玉"
+  - belong: A3
+    coordinates:
+      x: 31426
+      y: 7013
+    description: "贪金玉"
+  - belong: A3-副本内
+    coordinates:
+      x: 27296
+      y: 5920
+    description: "不动玉"
+  - belong: A3-副本内
+    coordinates:
+      x: 31433
+      y: 5882
+    description: "夺魂玉"
+  - belong: A3
+    coordinates:
+      x: 26971
+      y: 6271
+    description: "修炼玉"
+  - belong: A1
+    coordinates:
+      x: 20812
+      y: 9322
+    description: "定身玉"
+  - belong: A1
+    coordinates:
+      x: 17172
+      y: 9442
+    description: "卸力玉"
+  - belong: A1
+    coordinates:
+      x: 12869
+      y: 7191
+    description: "快攻玉"
+  - belong: A6
+    coordinates:
+      x: 12869
+      y: 7191
+    description: "速落玉"
+  - belong: A5
+    coordinates:
+      x: 5206
+      y: 10031
+    description: "群咒玉"
+  - belong: A5
+    coordinates:
+      x: 8506
+      y: 6254
+    description: "替死玉"
+  - belong: A5
+    coordinates:
+      x: 12684
+      y: 5065
+    description: "替死玉"
+  - belong: A4
+    coordinates:
+      x: 2333
+      y: 6280
+    description: "七伤玉"
+  - belong: A4
+    coordinates:
+      x: 6811
+      y: 5800
+    description: "调息玉"
+  - belong: AG
+    coordinates:
+      x: 24017
+      y: 5143
+    description: "借力玉"
+  - belong: AG
+    coordinates:
+      x: 23980
+      y: 5143
+    description: "化伤玉"
+  - belong: AG
+    coordinates:
+      x: 24224
+      y: 5136
+    description: "刺猬玉"
+  - belong: AG
+    coordinates:
+      x: 23270
+      y: 10584
+    description: "收金玉"
+  - belong: A2
+    coordinates:
+      x: 18206
+      y: 10255
+    description: "无惧玉"
+  
+玄铁:
+  - belong: A10
+    coordinates:
+      x: 34471
+      y: 6456
+    description: "玄铁"
+  - belong: A11
+    coordinates:
+      x: 25897
+      y: 7036
+    description: "玄铁"
+  - belong: A2
+    coordinates:
+      x: 23014
+      y: 8725
+    description: "玄铁"
+  - belong: A2
+    coordinates:
+      x: 18053
+      y: 7042
+    description: "玄铁"
+  - belong: A4
+    coordinates:
+      x: 2333
+      y: 6280
+    description: "玄铁"
+  - belong: A9
+    coordinates:
+      x: 29329
+      y: 4134
+    description: "玄铁"
+
+丹药催化剂:
+  - belong: A3
+    coordinates:
+      x: 31722
+      y: 7321
+    description: "丹药催化剂"
+  - belong: A10
+    coordinates:
+      x: 36625
+      y: 4752
+    description: "丹药催化剂"
+  - belong: A1
+    coordinates:
+      x: 16869
+      y: 9097
+    description: "丹药催化剂"
+  - belong: A6
+    coordinates:
+      x: 12059
+      y: 6908
+    description: "丹药催化剂 击杀精英获得"
+  - belong: A5
+    coordinates:
+      x: 16869
+      y: 9097
+    description: "丹药催化剂"
+  - belong: A4
+    coordinates:
+      x: 3610
+      y: 5168
+    description: "丹药催化剂 击杀精英获得"
+  - belong: A2
+    coordinates:
+      x: 19618
+      y: 11087
+    description: "丹药催化剂 击杀英招获得"
+  - belong: A9
+    coordinates:
+      x: 28067
+      y: 4478
+    description: "丹药催化剂"
+
+药斗扩充瓶:
+  - belong: A3-副本内
+    coordinates:
+      x: 26506
+      y: 5781
+    description: "药斗扩充瓶"
+  - belong: AG-副本内
+    coordinates:
+      x: 19931
+      y: 6330
+    description: "药斗扩充瓶"
+
+苍弓:
+  - belong: A5
+    coordinates:
+      x: 10867
+      y: 4333
+    description: "循敌镖"
+  - belong: A4
+    coordinates:
+      x: 2056
+      y: 6048
+    description: "破雷弹"

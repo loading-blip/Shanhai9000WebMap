@@ -4,12 +4,17 @@ import App from './App.vue'
 import explore_json from './assets/location/json/explore.json'
 import enemy_json from './assets/location/json/enemy.json'
 import mark_json from './assets/location/json/mark.json'
+import Yi_json from './assets/location/json/Yi.json'
+import submittedItem_json from './assets/location/json/submittedItem.json'
+
 import 'bootstrap'
 // python gdal2tiles,pyyaml
 //
 const markdata = {
     "explore": explore_json,
     "enemy": enemy_json,
+    "Yi" :Yi_json,
+    "submittedItem": submittedItem_json
 };
 //展平mark_json，去除顶级键，列出所有需要的标记
 var markImg = {};

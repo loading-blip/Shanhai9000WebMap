@@ -23,7 +23,7 @@ import {ShowControlPanel} from '../Tools/windowEvent.js';
     for (let i in mark_json){
         marker_image[i] = {}
         for(let j in mark_json[i]){
-            marker_image[i][j] = new URL(`../assets/mark/${mark_json[i][j]}`, import.meta.url).href
+            marker_image[i][j] = new URL(`../assets/mark/${mark_json[i][j]}`.replace(/\/\//g, '/'), import.meta.url).href
         }
     }
     //将markerCount和marker_image合并成一个对象

@@ -1,6 +1,10 @@
 # Shanhai 9000 Web Map
 
+<<<<<<< HEAD
 ![Version](https://img.shields.io/badge/version-0.1.1-blue) | Map collection progress (3/27) ![Progress](https://geps.dev/progress/10)
+=======
+![Version](https://img.shields.io/badge/version-0.1.1-blue) | Map collection progress (15/37) ![Progress](https://geps.dev/progress/40)
+>>>>>>> Map-marking
 
 Another web version of the NineSols map.
 
@@ -42,7 +46,10 @@ Congratulations! Jump to Releases page download. **(There are currently no relea
 
 `v0.1.0-video.mp4`
 
-[files](image/v0.1.0-video.mp4)
+![img](image/v0.1.1.png)
+[file](image/v0.1.0-video.mp4)
+
+
 ## Current direction
 
 - [X] **Beautify UI interface**
@@ -56,3 +63,5 @@ Congratulations! Jump to Releases page download. **(There are currently no relea
 Note:
 
 1. I'm not sure if local files can store cookies, but the AI's answer tells me that not all browsers support them by default
+
+**Important: Most of the contents in the `\src\assets\marks` are in-game resources**

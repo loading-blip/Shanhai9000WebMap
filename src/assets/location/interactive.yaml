@@ -1,5 +1,5 @@
 # 可交互物品
-top:
+Top:
   - belong: A0
     coordinates:
       x: 0
@@ -13,28 +13,28 @@ RadiProduct:
       y: 0
     description: "防辐射装置"
 
-lightSwitch:
+LightSwitch:
   - belong: A0
     coordinates:
       x: 0
       y: 0
     description: "场景灯开关"
 
-zipLine:
+ZipLine:
   - belong: A0
     coordinates:
       x: 0
       y: 0
     description: "滑索"
 
-jumpBall:
+JumpBall:
   - belong: A0
     coordinates:
       x: 0
       y: 0
     description: "太极跳"
     
-healthPotion:
+HealthPotion:
   - belong: A0
     coordinates:
       x: 0
@@ -42,7 +42,7 @@ healthPotion:
     description: "药"
 # 场景装置 金木水火土等
 # 传送点
-transport:
+Transport:
   - belong: A0
     coordinates:
       x: 0

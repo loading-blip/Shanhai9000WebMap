@@ -24,7 +24,7 @@ export function getImageSize(url) {
             resolve([image.width, image.height]);
         };
         image.onerror = function () {
-            reject(new Error('error'));
+            reject(new Error('error reading img file:'+ url));
         };
         image.src = url;
     });

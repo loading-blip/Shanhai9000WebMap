@@ -8,7 +8,7 @@ import markDescribe from './markDescribe.vue';
 import '../assets/marker.scss'
 const imageWidth = 38400;
 const imageHeight = 12722;
-const markWidth = 40;
+const markWidth = 20;
 const imageScale = 1.2;
 
 //地图上显示的所有不重复图标名称 such as:['vue.svg','chest.png']
@@ -30,7 +30,7 @@ onMounted(async ()=>{
 
   // https://leafletjs.cn/reference.html#divicon
   for (let i in setMark) {
-    let url = new URL(`../assets/mark/${setMark[i]}`, import.meta.url).href
+    let url = new URL(`../assets/mark/${setMark[i]}`.replace(/\/\//g, '/'), import.meta.url).href
     const imgSize = await getImageSize(url);
     const iconSize = [markWidth, imgSize[1] * markWidth / imgSize[0]];
     iconList[setMark[i]] = new L.divIcon({
@@ -80,7 +80,7 @@ onMounted(async ()=>{
             belong: markdata[types][i][j]['belong'],
             coordinates: [markdata[types][i][j]['coordinates']['x'], markdata[types][i][j]['coordinates']['y']],
             description: markdata[types][i][j]['description'],
-            markURL: new URL(`../assets/mark/${has_custom_image ?markdata[types][i][j]['custom-image']:markImg[i]}`, import.meta.url).href,
+            markURL: new URL(`../assets/mark/${has_custom_image ?markdata[types][i][j]['custom-image']:markImg[i]}`.replace(/\/\//g, '/'), import.meta.url).href,
             id: markdata[types][i][j]['id']
           }
         if(types === 'explore'){
