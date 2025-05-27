@@ -24,7 +24,6 @@ Chest:
      "金": 50
     description: "一个宝箱"
 
-
 LockedChest:
   - belong: A4
     coordinates:
@@ -32,7 +31,7 @@ LockedChest:
       y: 0
     content:
      "gold": 100
-     "丹药催化剂": 50
+     "丹药催化剂": 1
     description: "一个宝箱"
     require: "破解三个守卫"
   - belong: A4
@@ -277,6 +276,8 @@ RootNodes:
     coordinates:
       x: 22714
       y: 8904
+    content:
+      "太极踢": 1 
     description: "古树节点"
 
   - belong: A1
@@ -357,11 +358,15 @@ RootNodes:
     coordinates:
       x: 9616
       y: 7757
+    content:
+      "凌空闪": 1 
     description: "古树节点"
   - belong: A5
     coordinates:
       x: 10204
       y: 8921
+    content:
+      "无量反击": 1 
     description: "古树节点"
   - belong: A5
     coordinates:

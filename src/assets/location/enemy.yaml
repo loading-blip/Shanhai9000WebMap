@@ -1,11 +1,105 @@
 # 敌对
 TrainingMachine:
-  - belong: A0
+  - belong: A2
     coordinates:
-      x: 0
-      y: 0
-    description: "机械机器"
-
+      x: 22952
+      y: 8939
+    description: "中央运输枢纽-守卫"
+  - belong: A2
+    coordinates:
+      x: 22961
+      y: 9319
+    description: "中央运输枢纽-守卫"
+  - belong: A1
+    coordinates:
+      x: 19581
+      y: 9368
+    description: "猿人处理厂（连接桥）-守卫"
+  - belong: A1
+    coordinates:
+      x: 17631
+      y: 8999
+    description: "猿人处理厂（深处）-守卫"
+  - belong: A1
+    coordinates:
+      x: 17707
+      y: 9296
+    description: "猿人处理厂（深处）-守卫"
+  - belong: A1
+    coordinates:
+      x: 17011
+      y: 9439
+    description: "猿人处理厂（深处）-守卫"
+  - belong: A6
+    coordinates:
+      x: 10549
+      y: 7778
+    description: "炼丹工厂（地下通道）-守卫"
+  - belong: A6
+    coordinates:
+      x: 11363
+      y: 7765
+    description: "炼丹工厂（地下通道）-守卫"
+  - belong: A5
+    coordinates:
+      x: 10114
+      y: 4339
+    description: "炼丹工厂（生产区）-守卫"
+  - belong: A5
+    coordinates:
+      x: 8614
+      y: 4152
+    description: "炼丹工厂（生产区）-守卫"
+  - belong: A4
+    coordinates:
+      x: 2190
+      y: 4647
+    description: "仓库内场-守卫"
+  - belong: A4
+    coordinates:
+      x: 4631
+      y: 4656
+    description: "仓库内场-守卫"
+  - belong: A4
+    coordinates:
+      x: 3439
+      y: 4999
+    description: "仓库内场-守卫"
+  - belong: A7
+    coordinates:
+      x: 19441
+      y: 6330
+    description: "新昆仑运算场-守卫"
+  - belong: AG
+    coordinates:
+      x: 23120
+      y: 6024
+    description: "新昆仑控制中枢-守卫"
+  - belong: A2
+    coordinates:
+      x: 22551
+      y: 10028
+    description: "蓄能井（东侧）-守卫"
+  - belong: A2
+    coordinates:
+      x: 19631
+      y: 10049
+    description: "蓄能井（中）-守卫"
+  - belong: A2
+    coordinates:
+      x: 15242
+      y: 10676
+    description: "蓄能井（西侧）-守卫"
+  - belong: A2
+    coordinates:
+      x: 29036
+      y: 4283
+    description: "天人区（地下通道）-守卫"
+  - belong: A2
+    coordinates:
+      x: 29826
+      y: 4297
+    description: "天人区（地下通道）-守卫"
 # 各种卫兵 护盾生成器
 Boss:
   - belong: A0
@@ -17,12 +111,95 @@ Boss:
     description: "boss名称"
 
 Elite:
+  - belong: A10
+    coordinates:
+      x: 33957
+      y: 4679
+    spoil:
+      - 任务道具: 1
+    description: "--精英怪名称"
+  - belong: A3
+    coordinates:
+      x: 31326
+      y: 7011
+    spoil:
+      - 任务道具: 1
+    description: "--精英怪名称"
+  - belong: A2
+    coordinates:
+      x: 21590
+      y: 8304
+    spoil:
+      - 任务道具: 1
+    description: "--精英怪名称"
+  - belong: A1
+    coordinates:
+      x: 20942
+      y: 9312
+    spoil:
+      - 任务道具: 1
+    description: "--精英怪名称"
+  - belong: A1
+    coordinates:
+      x: 16534
+      y: 9122
+    spoil:
+      - 任务道具: 1
+    description: "--精英怪名称"
   - belong: A0
     coordinates:
-      x: 0
-      y: 0
+      x: 17892
+      y: 7034
     spoil:
-      -  务道具": 1
-    description: "精英怪名称"
-
+      - 玄铁: 1
+    description: "--精英怪名称"
+  - belong: A6
+    coordinates:
+      x: 11960
+      y: 6900
+    spoil:
+      - 丹药催化剂: 1
+    description: "--精英怪名称"
+  - belong: A6
+    coordinates:
+      x: 10521
+      y: 7497
+    spoil:
+      - 零件: 1
+    description: "--精英怪名称"
+  - belong: A5
+    coordinates:
+      x: 7038
+      y: 9296
+    spoil:
+      - 贵族戒指: 1
+    description: "--精英怪名称"
+  - belong: A5
+    coordinates:
+      x: 12440
+      y: 5066
+    spoil:
+      - 爆剑玉: 1
+    description: "--精英怪名称"
+  - belong: A4
+    coordinates:
+      x: 3671
+      y: 4656
+    spoil:
+      - 风火环: 1
+    description: "--精英怪名称"
+  - belong: A2
+    coordinates:
+      x: 22456
+      y: 10413
+    spoil:
+      - 算力元件: 1
+    description: "--精英怪名称"
+  - belong: A9
+    coordinates:
+      x: 29329
+      y: 4134
+    spoil:
+      - 玄铁: 1
+    description: "--精英怪名称"
 # 触发时生成的各种卫兵

@@ -14,3 +14,19 @@ explore:
   Fructification: "小道果.png" 
   RootNodes: "古树节点.png"
   Token: "令牌/己亥.png"
+
+submittedItem:
+  ShanHai9000: "圖資晶片/中央區.png"
+  ChiYou: "chi_you_profile.png"
+  ShenNong: "shen_nong_profile.png"
+  XuanXuan: "xuan_xuan_profile.png"
+  StoryItem: "剧情/扶桑牌.png"
+  EiGong: "玉玺/夸伏王璽.png"
+
+Yi:
+  算力元件: "羿/算力元件.png"
+  玉石: "羿/玉石系統.png"
+  玄铁: "羿/算力元件.png"
+  丹药催化剂: "羿/丹藥催化器.png"
+  药斗扩充瓶: "羿/藥斗擴充瓶.png"
+  苍弓: "羿/蒼弓.png"

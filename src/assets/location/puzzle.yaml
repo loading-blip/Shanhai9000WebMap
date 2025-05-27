@@ -1,9 +1,14 @@
 # 解谜
 Bell:
-  - belongs: A0
+  - belongs: A3
     coordinates:
-      x: 0
-      y: 0
+      x: 26506
+      y: 5781
+    description: "编钟"
+  - belongs: A9
+    coordinates:
+      x: 29492
+      y: 3219
     description: "编钟"
 
 Xuandie:
