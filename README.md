@@ -1,10 +1,5 @@
 # Shanhai 9000 Web Map
-
-<<<<<<< HEAD
-![Version](https://img.shields.io/badge/version-0.1.1-blue) | Map collection progress (3/27) ![Progress](https://geps.dev/progress/10)
-=======
 ![Version](https://img.shields.io/badge/version-0.1.1-blue) | Map collection progress (15/37) ![Progress](https://geps.dev/progress/40)
->>>>>>> Map-marking
 
 Another web version of the NineSols map.
 
