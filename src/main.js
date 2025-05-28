@@ -11,10 +11,10 @@ import 'bootstrap'
 // python gdal2tiles,pyyaml
 //
 const markdata = {
-    "explore": explore_json,
     "enemy": enemy_json,
+    "explore": explore_json,
+    "submittedItem": submittedItem_json,
     "Yi" :Yi_json,
-    "submittedItem": submittedItem_json
 };
 //展平mark_json，去除顶级键，列出所有需要的标记
 let markImg = {};
@@ -54,11 +54,10 @@ for(let type in markdata){
     }
 }
 
-
-
 console.log('marker json',mark_json)
 console.log('All markers',markImg)
 console.log('unique marker img',setMark)
+console.log('marker id range',markIdRange)
 
 const app = createApp(App)
 app.config.globalProperties.$setMark = setMark

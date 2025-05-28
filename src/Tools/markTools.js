@@ -59,8 +59,10 @@ export function getHideMarkerQuantity(markType,markedMarkList,markIdRange){
     let count = 0;
     for(let i in markedMarkList)
     {
-        if (markIdRange[markTypeIndex-1]<markedMarkList[i] && markIdRange[markTypeIndex+1]>markedMarkList[i])
+        i=parseInt(i);
+        if (markIdRange[markTypeIndex-1]<=i && i<markIdRange[markTypeIndex+1]){
             count++;
+        }
     }
     return count
 }

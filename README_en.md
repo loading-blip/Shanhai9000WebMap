@@ -66,6 +66,8 @@ Congratulations! Jump to Releases page download. **(There are currently no relea
 - [ ] Perhaps CSS animations will be added
 - [ ] Localized Chinese(ZH_CN&ZH_TW) interface
 - [ ] Localized English interface
+- [ ] Dynamic zoom in/out icon
+- [ ] Add a one-click hide button
 - [ ] **Add Wizard**
 - [ ] etc...
 
