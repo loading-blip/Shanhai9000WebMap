@@ -1,10 +1,15 @@
 <script setup>
-import { onMounted,getCurrentInstance } from 'vue';
+import { onMounted,getCurrentInstance,inject } from 'vue';
 import mark_json from '../assets/location/json/mark.json'
 import {ShowControlPanel} from '../Tools/windowEvent.js';
+import { getHideMarkerQuantity } from '../Tools/markTools.js';
 
     //地图上所有标记信息，xy位置，描述等
     let markdata = getCurrentInstance().appContext.config.globalProperties.$markdata;
+    //每个种类id范围 [min1,typename1,min2,typename2，...]
+    let markIdRange = getCurrentInstance().appContext.config.globalProperties.$markIdRange
+    //已标记标记点列表 {id:true}
+    const markedMarkList = inject('markedMarkList')
 
     //markdata处理成{'explore':['chest','lockedChest'],'enemy':[...]}
     //顺便获取每种标记的数量
@@ -41,7 +46,7 @@ import {ShowControlPanel} from '../Tools/windowEvent.js';
 
 onMounted(()=>{
     const pannelDiv = document.getElementById('control_pannel');
-    const handleBar = document.getElementsByClassName('right')[0];
+    const handleBar = document.getElementById('wake_up_handle');
     const mask = document.getElementsByClassName('mask')[0];
     handleBar.addEventListener('click',()=>{
         ShowControlPanel(
@@ -67,10 +72,7 @@ onMounted(()=>{
     })
 
     //初始化时隐藏
-    setTimeout(()=>{
-        pannelDiv.style.left = `${-pannelDiv.offsetWidth}px`;
-    },500);
-    
+
 })
 </script>
 
@@ -92,20 +94,22 @@ onMounted(()=>{
 
 <template>
     <div id="control_pannel">
-        <div v-for="(kinds,type) in marker_info" class="markGroup">
-            <p>{{ type.toUpperCase() }}</p>
-            <ul>
-                <li v-for="(info,lKinds) in kinds" @click="hiddenAndShowMark(lKinds)">
-                    <img :src="info[0]" :alt="lKinds">
-                    <a>{{ lKinds }}</a>&nbsp;
-                    <a>{{ info[1] }}</a>
-                </li>
-            </ul>
+        <div class="control-pannel-domain">
+            <div v-for="(kinds,type) in marker_info" class="markGroup">
+                <p>{{ type.toUpperCase() }}</p>
+                <ul>
+                    <li v-for="(info,lKinds) in kinds" @click="hiddenAndShowMark(lKinds)">
+                        <img :src="info[0]" :alt="lKinds">
+                        <a>{{ lKinds }}</a>&nbsp;
+                        <a>({{ getHideMarkerQuantity(lKinds,markedMarkList,markIdRange) }} / {{ info[1] }})</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="div_border top"></div>
+            <div class="div_border bottom"></div>
+            <div class="div_border left"></div>
+            <div class="div_border right" id="wake_up_handle"></div>
         </div>
-        <div class="div_border top"></div>
-        <div class="div_border bottom"></div>
-        <div class="div_border left"></div>
-        <div class="div_border right wake_up_handle"></div>
     </div>
     <teleport to="body">
         <div class="mask"></div>
@@ -118,6 +122,13 @@ $out-offset: -2px;
 $border-color: #a09255;
 $border-size: 7px;
 $background-color: #24282e;
+::-webkit-scrollbar{
+    width: 10px;
+    background-color: transparent;
+}   
+::-webkit-scrollbar-thumb{
+    background-color: rgb(87, 87, 87);
+}
 
 .div_border{
     position: absolute;
@@ -174,63 +185,62 @@ $background-color: #24282e;
         linear-gradient(to top,$border-color 0px,$border-color $border-size,transparent 3px,transparent 100%) right bottom no-repeat,
         linear-gradient(to left,$border-color 0px,$border-color $border-size,transparent 3px,transparent 100%) right bottom no-repeat,
 
-        linear-gradient(#24282e 0 0) content-box;
+        linear-gradient(#24282e90 0 0) content-box;
     padding: 5px ;
     background-size: 2rem 2rem;
     transition: all 0.2s ;
 
-    .markGroup:first-child{
-        margin-top: 50px;
-    }
-    .markGroup{
-    clear: both;    
-    margin-top: 20px;
-    p::after{
-        content: '\00A0';
-        display: block;
-        width: 20%;
-        height: 5px;
-        background-color: #a09255;
-        position: relative;
-    }
-    // p::before{
-    //     top: -2.5px;
-    //     left: 50%;
-    //     transform: translate(-50%,0);
-    // }
-    p::after{
-        bottom: -2.5px;
-        left: 50%;
-        transform: translate(-50%,0);
-    }
-    p{
-        font-size: 20px;
-        margin: 20px 0 20px 0;
-        text-align: center;
-    }
-    ul{
-        display: grid;
-        grid: repeat(4,40px) / repeat(2,50%);
-        padding-left: 20px;
-        li{
-            width: 100%;
-            height: 100%;
-            user-select: none;
-            // grid-column: 1/3;
+    .control-pannel-domain{
+        overflow-y: scroll;
+
+        height: 100%;
+        .markGroup:first-child{
+            margin-top: 50px;
+        }
+        .markGroup{
+        clear: both;    
+        margin-top: 20px;
+            p::after{
+                content: '\00A0';
+                display: block;
+                width: 20%;
+                height: 5px;
+                background-color: #a09255;
+                position: relative;
+            }
+            // p::before{
+            //     top: -2.5px;
+            //     left: 50%;
+            //     transform: translate(-50%,0);
+            // }
+            p::after{
+                bottom: -2.5px;
+                left: 50%;
+                transform: translate(-50%,0);
+            }
+            p{
+                font-size: 20px;
+                margin: 20px 0 20px 0;
+                text-align: center;
+            }
+            ul{
+                display: grid;
+                grid: repeat(4,auto) / repeat(2,50%);
+                padding-left: 20px;
+                list-style: none;
+
+                margin: 0;
+                li{
+                    user-select: none;
+                    float: left;
+                    cursor: pointer;
+                    margin-bottom: 10px;
+                }
+            }
         }
     }
 }
-}
-ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-li{
-    width: 25%;
-    float: left;
-    cursor: pointer;
-}
+
 img{
     width: 20px;
     margin-right: 5px;

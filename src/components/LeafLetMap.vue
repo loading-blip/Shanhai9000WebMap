@@ -1,7 +1,7 @@
 <script setup>
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
-import { onMounted,getCurrentInstance,createApp,} from 'vue';
+import { onMounted,getCurrentInstance,createApp,inject} from 'vue';
 import { pixtoMap } from '../Tools/unitConversion.js';
 import { addmark,getImageSize } from '../Tools/markTools.js';
 import markDescribe from './markDescribe.vue';
@@ -18,8 +18,8 @@ let markdata = getCurrentInstance().appContext.config.globalProperties.$markdata
 //每个图标使用的图标映射表
 let markImg = getCurrentInstance().appContext.config.globalProperties.$markImg;
 //标记了已完成的图标
-let markedMarkList = getCurrentInstance().appContext.config.globalProperties.$markedMarkList;
-
+// let markedMarkList = getCurrentInstance().appContext.config.globalProperties.$markedMarkList;
+ const markedMarkList = inject('markedMarkList')
 //将会使用的img列表
 let iconList = {}
 
@@ -95,7 +95,8 @@ onMounted(async ()=>{
         //渲染标记提示中的组件
         const markContainer = document.createElement('div');
         const innerApp = createApp(markDescribe, attr);
-        innerApp.config.globalProperties.$markedMarkList = markedMarkList;
+        innerApp.provide('markedMarkList',markedMarkList)
+        // innerApp.config.globalProperties.$markedMarkList = markedMarkList;
         innerApp.mount(markContainer) 
         mark.bindPopup(
           markContainer,{closeButton:false,minWidth: 300, maxHeight:400}

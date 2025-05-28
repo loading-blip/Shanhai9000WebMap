@@ -1,5 +1,5 @@
 <script setup>
-import { getCurrentInstance} from 'vue';
+import { inject} from 'vue';
 
 const props = defineProps({
     id: {
@@ -41,7 +41,7 @@ const props = defineProps({
     },
 });
 
-const markedMarkList = getCurrentInstance().appContext.config.globalProperties.$markedMarkList;
+const markedMarkList = inject('markedMarkList')
 
 function hideMark(id) {
     // mark.value is the reactive reference to markedMarkList
