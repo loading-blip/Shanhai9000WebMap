@@ -26,7 +26,7 @@ let iconList = {}
   //重定向图标s
   let markImagesLink = {}
   for (let key in markImg){
-    markImagesLink[key] = new URL(`/mark/${markImg[key]}`, import.meta.url).href
+    markImagesLink[key] = new URL(`/mark/${markImg[key]}`.replace(/\/\//g, '/'), import.meta.url).href
   }
 
 

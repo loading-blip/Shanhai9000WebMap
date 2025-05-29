@@ -72,7 +72,9 @@ onMounted(()=>{
     })
 
     //初始化时隐藏
-
+    setTimeout(()=>{
+        pannelDiv.style.left = `${-pannelDiv.offsetWidth}px`;
+    },500);
 })
 </script>
 
@@ -100,8 +102,8 @@ onMounted(()=>{
                 <ul>
                     <li v-for="(info,lKinds) in kinds" @click="hiddenAndShowMark(lKinds)">
                         <img :src="info[0]" :alt="lKinds">
-                        <a>{{ lKinds }}</a>&nbsp;
-                        <a>({{ getHideMarkerQuantity(lKinds,markedMarkList,markIdRange) }} / {{ info[1] }})</a>
+                        <a>{{ getHideMarkerQuantity(lKinds,markedMarkList,markIdRange) }} / {{ info[1] }}</a>&nbsp;
+                        <a>{{ lKinds }}</a>
                     </li>
                 </ul>
             </div>
