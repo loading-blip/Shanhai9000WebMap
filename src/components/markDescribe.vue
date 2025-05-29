@@ -29,7 +29,7 @@ const props = defineProps({
     },
     markURL: {
         type: String,
-        default: new URL('/mark/vue.svg', import.meta.url).href
+        default: new URL('/Shanhai9000WebMap/mark/vue.svg', import.meta.url).href
     },
     imgURL: {
         type: String,

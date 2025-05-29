@@ -26,7 +26,7 @@ let iconList = {}
 //预加载图标
 let markImages = {}
 for (let key in markImg){
-  markImages[key] = new URL(`/mark/${markImg[key]}`, import.meta.url).href
+  markImages[key] = new URL(`/Shanhai9000WebMap/mark/${markImg[key]}`, import.meta.url).href
 }
 
 
@@ -35,7 +35,7 @@ onMounted(async ()=>{
 
   // https://leafletjs.cn/reference.html#divicon
   for (let i in setMark) {
-    let url = new URL(`/mark/${setMark[i]}`.replace(/\/\//g, '/'), import.meta.url).href
+    let url = new URL(`/Shanhai9000WebMap/mark/${setMark[i]}`.replace(/\/\//g, '/'), import.meta.url).href
     const imgSize = await getImageSize(url);
     const iconSize = [markWidth, imgSize[1] * markWidth / imgSize[0]];
     iconList[setMark[i]] = new L.divIcon({
@@ -86,7 +86,7 @@ onMounted(async ()=>{
             coordinates: [markdata[types][i][j]['coordinates']['x'], markdata[types][i][j]['coordinates']['y']],
             description: markdata[types][i][j]['description'],
             markURL: has_custom_image?
-                    new URL(`/mark/${ markdata[types][i][j]['custom-image']}`.replace(/\/\//g, '/'), import.meta.url).href
+                    new URL(`/Shanhai9000WebMap/mark/${ markdata[types][i][j]['custom-image']}`.replace(/\/\//g, '/'), import.meta.url).href
                     :markImages[i],
             id: markdata[types][i][j]['id']
           }

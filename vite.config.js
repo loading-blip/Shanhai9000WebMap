@@ -6,7 +6,6 @@ import path from 'path'
 export default defineConfig({
   plugins: [vue()],
   base: './',
-  assetsInclude: ['**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.webp', '**/*.svg'],
   assetsInlineLimit: 4096,
   build: {
     outDir: "docs",
