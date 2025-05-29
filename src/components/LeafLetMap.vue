@@ -19,10 +19,15 @@ let markdata = getCurrentInstance().appContext.config.globalProperties.$markdata
 let markImg = getCurrentInstance().appContext.config.globalProperties.$markImg;
 //标记了已完成的图标
 // let markedMarkList = getCurrentInstance().appContext.config.globalProperties.$markedMarkList;
- const markedMarkList = inject('markedMarkList')
+const markedMarkList = inject('markedMarkList')
 //将会使用的img列表
 let iconList = {}
 
+//预加载图标
+let markImages = {}
+for (let key in markImg){
+  markImages[key] = new URL(`/mark/${markImg[key]}`, import.meta.url).href
+}
 
 
 
@@ -30,7 +35,7 @@ onMounted(async ()=>{
 
   // https://leafletjs.cn/reference.html#divicon
   for (let i in setMark) {
-    let url = new URL(`../assets/mark/${setMark[i]}`.replace(/\/\//g, '/'), import.meta.url).href
+    let url = new URL(`/mark/${setMark[i]}`.replace(/\/\//g, '/'), import.meta.url).href
     const imgSize = await getImageSize(url);
     const iconSize = [markWidth, imgSize[1] * markWidth / imgSize[0]];
     iconList[setMark[i]] = new L.divIcon({
@@ -51,7 +56,7 @@ onMounted(async ()=>{
     0     // y offset量
   )
   const map = L.map('map',{crs: crs,attributionControl: false,zoomControl: false});
-  L.tileLayer('./src/assets/maps/maps/{z}/{x}/{y}.png', {
+  L.tileLayer('/maps/maps/{z}/{x}/{y}.png', {
         attribution: 'Local Map',
         noWrap: true,
         tileSize: 500,
@@ -80,7 +85,9 @@ onMounted(async ()=>{
             belong: markdata[types][i][j]['belong'],
             coordinates: [markdata[types][i][j]['coordinates']['x'], markdata[types][i][j]['coordinates']['y']],
             description: markdata[types][i][j]['description'],
-            markURL: new URL(`../assets/mark/${has_custom_image ?markdata[types][i][j]['custom-image']:markImg[i]}`.replace(/\/\//g, '/'), import.meta.url).href,
+            markURL: has_custom_image?
+                    new URL(`/mark/${ markdata[types][i][j]['custom-image']}`.replace(/\/\//g, '/'), import.meta.url).href
+                    :markImages[i],
             id: markdata[types][i][j]['id']
           }
         if(types === 'explore'){

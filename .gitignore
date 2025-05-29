@@ -26,3 +26,4 @@ dist-ssr
 
 src/assets/location/json/*
 src/assets/maps/maps/*
+public/maps/maps/*

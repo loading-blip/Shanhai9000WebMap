@@ -75,4 +75,4 @@ Note:
 
 1. I'm not sure if local files can store cookies, but the AI's answer tells me that not all browsers support them by default
 
-**Important: Most of the contents in the `\src\assets\marks` are in-game resources**
+**Important: Most of the contents in the `/public/marks` are in-game resources**
