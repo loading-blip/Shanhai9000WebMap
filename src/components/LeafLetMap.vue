@@ -28,6 +28,11 @@ let markImages = {}
 for (let key in markImg){
   markImages[key] = new URL(`/Shanhai9000WebMap/mark/${markImg[key]}`, import.meta.url).href
 }
+  //重定向图标s
+  let markImagesLink = {}
+  for (let key in markImg){
+    markImagesLink[key] = new URL(`/mark/${markImg[key]}`.replace(/\/\//g, '/'), import.meta.url).href
+  }
 
 
 onMounted(async ()=>{
