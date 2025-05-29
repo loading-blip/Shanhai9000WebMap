@@ -6,7 +6,9 @@ import path from 'path'
 export default defineConfig({
   plugins: [vue()],
   assetsInclude: ['**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.webp', '**/*.svg'],
+  assetsInlineLimit: 4096,
   build: {
+    outDir: "docs",
     rollupOptions: {
       output: {
         chunkFileNames: 'static/js/[name]-[hash].js',
