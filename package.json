@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "splitMap": "gdal2tiles.py -z 0-7 --profile=raster --xyz --tilesize=500 ./src/assets/maps/map.png ./src/assets/maps/maps",
+    "splitMap": "gdal2tiles.py -z 0-7 --profile=raster --xyz --tilesize=500 ./public/maps/map.png ./public/maps/maps",
     "updateMarker": "python yamlTojson.py ./src/assets/location"
   },
   "dependencies": {
