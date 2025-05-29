@@ -56,7 +56,7 @@
 [file](image/v0.1.0-video.mp4)
 
 `v0.1.2.png`
-![img](image/v0.1.1.png)
+![img](image/v0.1.2.png)
 
 ## 当前计划
 
