@@ -20,9 +20,10 @@ onMounted(() => {
           <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
         </svg>
       </div>
-      <p>Preview version 0.1.2</p>
+      <p>Preview version 0.1.2-fix</p>
       <p>Map collection progress (15/37)</p>
-      <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="7.4" aria-valuemin="0" aria-valuemax="100">
+      <p><a href="https://github.com/loading-blip/Shanhai9000WebMap/" target="_blank">GitHub</a></p>
+      <div class="progress" role="progres sbar" aria-label="Animated striped example" aria-valuenow="7.4" aria-valuemin="0" aria-valuemax="100">
         <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 40.54%"></div>
       </div>
     </div>

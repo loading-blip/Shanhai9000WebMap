@@ -3,7 +3,7 @@ import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import { onMounted,getCurrentInstance,createApp,inject} from 'vue';
 import { pixtoMap } from '../Tools/unitConversion.js';
-import { addmark,getImageSize } from '../Tools/markTools.js';
+import { addmark,getImage } from '../Tools/markTools.js';
 import markDescribe from './markDescribe.vue';
 import '../assets/marker.scss'
 const imageWidth = 38400;
@@ -23,30 +23,29 @@ const markedMarkList = inject('markedMarkList')
 //将会使用的img列表
 let iconList = {}
 
-//预加载图标
-let markImages = {}
-for (let key in markImg){
-  markImages[key] = new URL(`/mark/${markImg[key]}`, import.meta.url).href
-}
-
+  //重定向图标s
+  let markImagesLink = {}
+  for (let key in markImg){
+    markImagesLink[key] = new URL(`/mark/${markImg[key]}`, import.meta.url).href
+  }
 
 
 onMounted(async ()=>{
-
-  // https://leafletjs.cn/reference.html#divicon
-  for (let i in setMark) {
-    let url = new URL(`/mark/${setMark[i]}`.replace(/\/\//g, '/'), import.meta.url).href
-    const imgSize = await getImageSize(url);
-    const iconSize = [markWidth, imgSize[1] * markWidth / imgSize[0]];
-    iconList[setMark[i]] = new L.divIcon({
+  //预加载图标
+  const iconPromises = Object.values(setMark).map(async (markName) => {
+    let url = new URL(`/mark/${markName}`.replace(/\/\//g, '/'), import.meta.url).href;
+    const imgLabel = await getImage(url);
+    const iconSize = [markWidth, imgLabel.height * markWidth / imgLabel.width];
+    iconList[markName] = new L.divIcon({
       className: 'custom-icon',
       iconSize: iconSize,
       iconAnchor: [iconSize[1] / 2, iconSize[0] / 2],
-      popupAnchor: [(markWidth * imageScale-markWidth)/2, -iconSize[1] / 2*imageScale],
-      html: `<img src="${url}" alt="${setMark[i]}" id="${setMark[i]}" style="width:${markWidth * imageScale}px"/>`
+      popupAnchor: [(markWidth * imageScale - markWidth) / 2, -iconSize[1] / 2 * imageScale],
+      html: `<img src="${url}" alt="${markName}" id="${markName}" style="width:${markWidth * imageScale}px"/>`
     });
-  }
+  });
 
+  await Promise.all(iconPromises);
 
   const crs = L.CRS.Simple;
   crs.transformation = new L.Transformation(
@@ -87,7 +86,7 @@ onMounted(async ()=>{
             description: markdata[types][i][j]['description'],
             markURL: has_custom_image?
                     new URL(`/mark/${ markdata[types][i][j]['custom-image']}`.replace(/\/\//g, '/'), import.meta.url).href
-                    :markImages[i],
+                    :markImagesLink[i],
             id: markdata[types][i][j]['id']
           }
         if(types === 'explore'){
