@@ -17,17 +17,21 @@ export function addmark(xy,attr){
     });
     return marker;
 }
-
-export function getImageSize(url) {
+/**
+ * 
+ * @param {String} url 标记图片
+ * @returns {list} Image()
+ */
+export function getImage(url) {
     return new Promise(function (resolve, reject) {
-        let image = new Image();
-        image.onload = function () {
-            resolve([image.width, image.height]);
+        const image_icon =  new Image();
+        image_icon.onload = function () {
+            resolve(image_icon);
         };
-        image.onerror = function () {
+        image_icon.onerror = function () {
             reject(new Error('error reading img file:'+ url));
         };
-        image.src = url;
+        image_icon.src = url;
     });
 }
 
