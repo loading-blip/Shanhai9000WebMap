@@ -1,21 +1,22 @@
 # Shanhai 9000 Web Map
 
-![Version](https://img.shields.io/badge/version-0.1.2-blue) | Map collection progress (15/37) ![Progress](https://geps.dev/progress/40)
+![Version](https://img.shields.io/badge/version-0.1.3-blue) | Map collection progress (15/37) ![Progress](https://geps.dev/progress/40)
 
 English | [Chinese(CN)](README.md)
-
 
 Another web version of the "NineSols" map.
 
 Like other web game maps, it can choose to hide markers.
 
 ## Functions
-~~Hide a type of icon (the necessary function)~~
-Individually fade (hide) an icon
-After fading, the collection progress can be viewed in the control panel
-Side pull control panel
-Other features are under development (especially beginner guidance)
 
+- ~~Hide a type of icon (the necessary function)~~
+- Individually fade (hide) an icon
+- After fading, the collection progress can be viewed in the control panel
+- Side pull control panel
+- One-click to reset/display of displayed markers
+- The icon can now become larger as the map changes
+- Other features are under development (especially beginner guidance)
 
 This map will collect:
 
@@ -54,8 +55,8 @@ Congratulations! Jump to Releases page download. **(There are currently no relea
 `v0.1.0-video.mp4`
 [file](image/v0.1.0-video.mp4)
 
-`v0.1.2.png`
-![img](image/v0.1.1.png)
+`v0.1.3.png`
+![img](image/v0.1.3.png)
 
 ## Current direction
 
@@ -66,13 +67,14 @@ Congratulations! Jump to Releases page download. **(There are currently no relea
 - [ ] Perhaps CSS animations will be added
 - [ ] Localized Chinese(ZH_CN&ZH_TW) interface
 - [ ] Localized English interface
-- [ ] Dynamic zoom in/out icon
-- [ ] Add a one-click hide button
+- [X] Dynamic zoom in/out icon
+- [X] Add a one-click hide button
+- [ ] Add settings window
 - [ ] **Add Wizard**
 - [ ] etc...
 
 Note:
 
-1. I'm not sure if local files can store cookies, but the AI's answer tells me that not all browsers support them by default
+1. I'm not sure if the 'file://' protocol supports cookies. More voices say that this protocol uses cookies and supports different browsers differently.
 
 **Important: Most of the contents in the `/public/marks` are in-game resources**

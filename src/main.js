@@ -23,7 +23,10 @@ let setMark = [];
 //遍历每个种类id范围 [min1,typename1,min2,typename2，...]
 let markIdRange = [];
 //已标记标记点
-let markedMarkList = reactive({})
+const markedMarkList = reactive({})
+//设置：默认显示的标记点小类
+const defaultShowMarkerType = ['RootNodes']
+
 
 //type 大类 [enemy,explore] subType 小类 [chest,enemy,explore] 详见yaml文件
 for (let type in mark_json) {
@@ -58,6 +61,8 @@ console.log('marker json',mark_json)
 console.log('All markers',markImg)
 console.log('unique marker img',setMark)
 console.log('marker id range',markIdRange)
+console.log('default show marker type',defaultShowMarkerType)
+
 
 const app = createApp(App)
 app.config.globalProperties.$setMark = setMark
@@ -65,7 +70,7 @@ app.config.globalProperties.$markdata = markdata
 app.config.globalProperties.$markImg = markImg
 app.config.globalProperties.$markedMarkList = markedMarkList
 app.config.globalProperties.$markIdRange = markIdRange
-
+app.config.globalProperties.$defaultShowMarkerType = defaultShowMarkerType
 
 app.provide('markedMarkList', markedMarkList)
 
