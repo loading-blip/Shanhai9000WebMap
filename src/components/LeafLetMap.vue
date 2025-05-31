@@ -37,7 +37,7 @@ onMounted(async ()=>{
         let data = markdata[types][i][j];
         let has_custom_image = Object.keys(data).includes('custom-image');
         let markName = has_custom_image ? data['custom-image'] : markImg[i];
-        let imgUrl = new URL(`/mark/${markName}`.replace(/\/\//g, '/'), import.meta.url).href;
+        let imgUrl = new URL(`/Shanhai9000WebMap/mark/${markName}`.replace(/\/\//g, '/'), import.meta.url).href;
         markerTasks.push({
           types, i, j, data, has_custom_image, markName, imgUrl
         });
@@ -89,7 +89,7 @@ onMounted(async ()=>{
       coordinates: [data['coordinates']['x'], data['coordinates']['y']],
       description: data['description'],
       markURL: has_custom_image
-        ? new URL(`/mark/${data['custom-image']}`.replace(/\/\//g, '/'), import.meta.url).href
+        ? new URL(`/Shanhai9000WebMap/mark/${data['custom-image']}`.replace(/\/\//g, '/'), import.meta.url).href
         : markImagesLink[i],
       id: data['id']
     };
