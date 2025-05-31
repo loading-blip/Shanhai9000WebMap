@@ -56,7 +56,7 @@ onMounted(async ()=>{
       for (let j=0;j<markdata[types][i].length;j++){
         let has_custom_image = Object.keys(markdata[types][i][j]).indexOf('custom-image') !== -1;
         let markName = has_custom_image ? markdata[types][i][j]['custom-image'] : markImg[i];
-        let imgLabel = await getImage(new URL(`/mark/${markName}`.replace(/\/\//g, '/'), import.meta.url).href);
+        let imgLabel = await getImage(new URL(`/Shanhai9000WebMap/mark/${markName}`.replace(/\/\//g, '/'), import.meta.url).href);
         let iconSize = [markWidth, imgLabel.height * markWidth / imgLabel.width];
         let icon = new L.divIcon({
           className: 'custom-icon',
