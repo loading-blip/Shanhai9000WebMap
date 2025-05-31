@@ -79,8 +79,8 @@ onMounted(async ()=>{
             description: markdata[types][i][j]['description'],
             markURL: has_custom_image?
                     new URL(`/Shanhai9000WebMap/mark/${ markdata[types][i][j]['custom-image']}`.replace(/\/\//g, '/'), import.meta.url).href
-                    :markImages[i],
-            id: markdata[types][i][j]['id']
+                    :markImagesLink[i],
+                    id: markdata[types][i][j]['id']
           }
         if(types === 'explore'){
           attr = { ...attr, content:markdata[types][i][j]['content']}
