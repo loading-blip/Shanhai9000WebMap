@@ -29,6 +29,23 @@ let defaultShowMarkerType = getCurrentInstance().appContext.config.globalPropert
 
 
 onMounted(async ()=>{
+  //预加载图片
+  let markerTasks = [];
+  for (let types in markdata) {
+    for (let i in markdata[types]) {
+      for (let j = 0; j < markdata[types][i].length; j++) {
+        let data = markdata[types][i][j];
+        let has_custom_image = Object.keys(data).includes('custom-image');
+        let markName = has_custom_image ? data['custom-image'] : markImg[i];
+        let imgUrl = new URL(`/mark/${markName}`.replace(/\/\//g, '/'), import.meta.url).href;
+        markerTasks.push({
+          types, i, j, data, has_custom_image, markName, imgUrl
+        });
+      }
+    }
+  }
+  const imgLabels = await Promise.all(markerTasks.map(task => getImage(task.imgUrl)));
+
   // 用于保存所有 marker 及其元数据，方便后续缩放时重设 icon
   let allMarkers = [];
 
@@ -51,83 +68,70 @@ onMounted(async ()=>{
   map.setView(pixtoMap([imageWidth/2,imageHeight/2]), 3)
 
   //开始渲染标记
-  for (let types in markdata){
-    for (let i in markdata[types]){
-      for (let j=0;j<markdata[types][i].length;j++){
-        let has_custom_image = Object.keys(markdata[types][i][j]).indexOf('custom-image') !== -1;
-        let markName = has_custom_image ? markdata[types][i][j]['custom-image'] : markImg[i];
-        let imgLabel = await getImage(new URL(`/mark/${markName}`.replace(/\/\//g, '/'), import.meta.url).href);
-        let iconSize = [markWidth, imgLabel.height * markWidth / imgLabel.width];
-        let icon = new L.divIcon({
-          className: 'custom-icon',
-          iconSize: iconSize,
-          iconAnchor: [iconSize[1] / 2, iconSize[0] / 2],
-          popupAnchor: [(markWidth * imageScale - markWidth) / 2, -iconSize[1] / 2 * imageScale],
-          html: `<img src="${imgLabel.src}" alt="${markName}" style="width:${markWidth * imageScale}px"/>`
-        });
+  markerTasks.forEach((task, idx) => {
+    const { types, i, j, data, has_custom_image, markName, imgUrl } = task;
+    const imgLabel = imgLabels[idx];
+    let iconSize = [markWidth, imgLabel.height * markWidth / imgLabel.width];
+    let icon = new L.divIcon({
+      className: 'custom-icon',
+      iconSize: iconSize,
+      iconAnchor: [iconSize[1] / 2, iconSize[0] / 2],
+      popupAnchor: [(markWidth * imageScale - markWidth) / 2, -iconSize[1] / 2 * imageScale],
+      html: `<img src="${imgLabel.src}" alt="${markName}" style="width:${markWidth * imageScale}px"/>`
+    });
 
-        let mark = addmark(
-          [
-            markdata[types][i][j]['coordinates']['x'],
-            markdata[types][i][j]['coordinates']['y']
-          ],
-          { icon }
-        );
-        let attr = {
-            belong: markdata[types][i][j]['belong'],
-            coordinates: [markdata[types][i][j]['coordinates']['x'], markdata[types][i][j]['coordinates']['y']],
-            description: markdata[types][i][j]['description'],
-            markURL: has_custom_image?
-                    new URL(`/mark/${ markdata[types][i][j]['custom-image']}`.replace(/\/\//g, '/'), import.meta.url).href
-                    :markImagesLink[i],
-            id: markdata[types][i][j]['id']
-          }
-        if(types === 'explore'){
-          attr = { ...attr, content:markdata[types][i][j]['content']}
-        }
-        if(types === 'enemy'){
-          attr = { ...attr, spoil:markdata[types][i][j]['spoil']}
-        }
-        if(i === 'lockedChest'){
-          attr = { ...attr, ne_require: markdata[types][i][j]['require']}
-        }
-        //渲染标记提示中的组件
-        const markContainer = document.createElement('div');
-        const innerApp = createApp(markDescribe, attr);
-        innerApp.provide('markedMarkList',markedMarkList)
-        innerApp.mount(markContainer) 
-        mark.bindPopup(
-          markContainer,{closeButton:false,minWidth: 300, maxHeight:400}
-        )
+    let mark = addmark(
+      [data['coordinates']['x'], data['coordinates']['y']],
+      { icon }
+    );
+    let attr = {
+      belong: data['belong'],
+      coordinates: [data['coordinates']['x'], data['coordinates']['y']],
+      description: data['description'],
+      markURL: has_custom_image
+        ? new URL(`/mark/${data['custom-image']}`.replace(/\/\//g, '/'), import.meta.url).href
+        : markImagesLink[i],
+      id: data['id']
+    };
+    if (types === 'explore') attr = { ...attr, content: data['content'] };
+    if (types === 'enemy') attr = { ...attr, spoil: data['spoil'] };
+    if (i === 'lockedChest') attr = { ...attr, ne_require: data['require'] };
 
-        mark.addTo(map);
-        mark._icon.classList.add(i);
-        mark._icon.classList.add(markdata[types][i][j]['belong'].split("-")[0]+"_area");
-        mark._icon.id+=('mark_'+markdata[types][i][j]['id']);
+    //渲染标记提示中的组件
+    const markContainer = document.createElement('div');
+    const innerApp = createApp(markDescribe, attr);
+    innerApp.provide('markedMarkList', markedMarkList);
+    innerApp.mount(markContainer);
+    mark.bindPopup(markContainer, { closeButton: false, minWidth: 300, maxHeight: 400 });
 
-        const markAddedClass = [i,markdata[types][i][j]['belong'].split("-")[0]+"_area"]
-        const markIdList = mark._icon.id
-        
-        //如果没在defaultShowMarkerType列表中的图标会被隐藏
-        if (!defaultShowMarkerType.includes(i)) 
-          mark._icon.style.display="none";
-        else 
-          mark._icon.style.display="inline";
-        allMarkers.push({
-          mark,
-          markName,
-          imgLabel,
-          markAddedClass,
-          markIdList
-        });
-      }
-    }
-  }
-map.on('zoomend', function() {
+    mark.addTo(map);
+    mark._icon.classList.add(i);
+    mark._icon.classList.add(data['belong'].split("-")[0] + "_area");
+    mark._icon.id += ('mark_' + data['id']);
+
+    const markAddedClass = [i, data['belong'].split("-")[0] + "_area"];
+    const markIdList = mark._icon.id;
+
+    //如果没在defaultShowMarkerType列表中的图标会被隐藏
+    if (!defaultShowMarkerType.includes(i))
+      mark._icon.style.display = "none";
+    else
+      mark._icon.style.display = "inline";
+    allMarkers.push({
+      mark,
+      markName,
+      imgLabel,
+      markAddedClass,
+      markIdList
+    });
+  });
+
+  // 缩放时动态调整 marker 大小
+  map.on('zoomend', function () {
     let zoom = map.getZoom();
     //fx = 1.1^x
-    let scale = 1.1**zoom;
-    allMarkers.forEach(({mark, markName, imgLabel,markAddedClass,markIdList}) => {
+    let scale = 1.1 ** zoom;
+    allMarkers.forEach(({ mark, markName, imgLabel, markAddedClass, markIdList }) => {
       let iconSize = [markWidth, imgLabel.height * markWidth / imgLabel.width];
       let icon = new L.divIcon({
         className: 'custom-icon',
@@ -136,7 +140,6 @@ map.on('zoomend', function() {
         popupAnchor: [(markWidth * scale - markWidth) / 2, -iconSize[1] / 2 * scale],
         html: `<img src="${imgLabel.src}" alt="${markName}" style="width:${markWidth * scale}px"/>`
       });
-      console.log(markAddedClass,markIdList)
       mark.setIcon(icon);
       mark._icon.classList.add(...markAddedClass);
       mark._icon.id = markIdList;
