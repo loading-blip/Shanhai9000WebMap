@@ -44,7 +44,6 @@ const props = defineProps({
 const markedMarkList = inject('markedMarkList')
 
 function hideMark(id) {
-    // mark.value is the reactive reference to markedMarkList
     if (Object.keys(markedMarkList).indexOf(String(id)) !== -1) {
         delete markedMarkList[id];
         document.getElementById('mark_' + id).style.opacity = 1;
@@ -123,7 +122,6 @@ function hideMark(id) {
         
     }
     .mark_image{
-        // height: 200px;
         border: 1px solid #888;
         grid-column: 1 / 3;
         grid-row: 3/5;
@@ -138,9 +136,6 @@ function hideMark(id) {
             width: 100%;
             height: 100%;
             position: relative;
-            // right: 5%;
-            // top: 50%;
-            // transform: translate(0, -50%);
         }
     }
     .marker_describe{

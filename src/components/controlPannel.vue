@@ -2,14 +2,16 @@
 import { onMounted,getCurrentInstance,inject } from 'vue';
 import mark_json from '../assets/location/json/mark.json'
 import {ShowControlPanel} from '../Tools/windowEvent.js';
-import { getHideMarkerQuantity } from '../Tools/markTools.js';
+import { getHideMarkerQuantity,hiddenAndShowMark,resetToDefaultMarker,showAllMarker } from '../Tools/markTools.js';
 
-    //地图上所有标记信息，xy位置，描述等
-    let markdata = getCurrentInstance().appContext.config.globalProperties.$markdata;
-    //每个种类id范围 [min1,typename1,min2,typename2，...]
-    let markIdRange = getCurrentInstance().appContext.config.globalProperties.$markIdRange
-    //已标记标记点列表 {id:true}
-    const markedMarkList = inject('markedMarkList')
+//地图上所有标记信息，xy位置，描述等
+let markdata = getCurrentInstance().appContext.config.globalProperties.$markdata;
+//每个种类id范围 [min1,typename1,min2,typename2，...]
+let markIdRange = getCurrentInstance().appContext.config.globalProperties.$markIdRange
+//已标记标记点列表 {id:true}
+const markedMarkList = inject('markedMarkList')
+//设置：默认显示的标记点小类
+let defaultShowMarkerType = getCurrentInstance().appContext.config.globalProperties.$defaultShowMarkerType;
 
     //markdata处理成{'explore':['chest','lockedChest'],'enemy':[...]}
     //顺便获取每种标记的数量
@@ -76,23 +78,11 @@ onMounted(()=>{
         pannelDiv.style.left = `${-pannelDiv.offsetWidth}px`;
     },500);
 })
+
+function resetMarker(x=''){resetToDefaultMarker(x?[]:defaultShowMarkerType);}
+
 </script>
 
-<script>
-    export default {
-        methods:{
-            hiddenAndShowMark(className){
-                
-                let marks = document.getElementsByClassName(className);
-                if (marks.length==0){return}
-                for(let markIndex=0;markIndex<marks.length;markIndex++){  
-                    marks[markIndex].style.display = marks[markIndex].style.display==='none'?'block':'none';
-                }
-            }
-            
-        }
-    }
-</script>
 
 <template>
     <div id="control_pannel">
@@ -112,6 +102,11 @@ onMounted(()=>{
             <div class="div_border left"></div>
             <div class="div_border right" id="wake_up_handle"></div>
         </div>
+        <div class="button_div">
+            <button id="reset_display_marker" @click="resetMarker()"><a>恢复默认</a></button>
+            <button id="show_all_marker" @click="showAllMarker()"><a>全部显示</a></button>
+        </div>
+        
     </div>
     <teleport to="body">
         <div class="mask"></div>
@@ -119,11 +114,50 @@ onMounted(()=>{
 </template>
 
 <style scoped lang="scss">
-
+@use "sass:color";
 $out-offset: -2px;
 $border-color: #a09255;
 $border-size: 7px;
 $background-color: #24282e;
+.button_div{
+    $button-height:40px;
+    $button-width:100px;
+    $button-margin:10px; 
+    button{
+        background-color: $background-color;
+        border: 2px solid $border-color;
+        width: $button-width;
+        height: $button-height;
+
+        text-align:center;
+        transition: 0.1s;
+        color:white;
+        cursor:pointer;
+        a{
+            line-height:$button-height - 5px; 
+            user-select:none;
+        }
+    }
+    button:hover{
+        background:$border-color;
+    }
+    button:active{
+        background: color.mix($border-color,rgb(0,0,0));
+    }
+    #reset_display_marker{
+        position: absolute;
+        right: 50px;
+        bottom: 30px;
+    }
+    #show_all_marker{
+        position: absolute;
+        right: 50px + $button-width + $button-margin;
+        bottom: 30px;
+    }
+}
+
+
+
 ::-webkit-scrollbar{
     width: 10px;
     background-color: transparent;
@@ -194,14 +228,14 @@ $background-color: #24282e;
 
     .control-pannel-domain{
         overflow-y: scroll;
-
-        height: 100%;
+        margin-top: 20px;
+        height: calc(100% - 100px);
         .markGroup:first-child{
             margin-top: 50px;
         }
         .markGroup{
-        clear: both;    
-        margin-top: 20px;
+        clear: both;
+        margin-bottom: 20px;
             p::after{
                 content: '\00A0';
                 display: block;
@@ -210,11 +244,6 @@ $background-color: #24282e;
                 background-color: #a09255;
                 position: relative;
             }
-            // p::before{
-            //     top: -2.5px;
-            //     left: 50%;
-            //     transform: translate(-50%,0);
-            // }
             p::after{
                 bottom: -2.5px;
                 left: 50%;

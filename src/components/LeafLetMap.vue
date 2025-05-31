@@ -3,7 +3,7 @@ import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import { onMounted,getCurrentInstance,createApp,inject} from 'vue';
 import { pixtoMap } from '../Tools/unitConversion.js';
-import { addmark,getImage } from '../Tools/markTools.js';
+import { addmark,getImage} from '../Tools/markTools.js';
 import markDescribe from './markDescribe.vue';
 import '../assets/marker.scss'
 const imageWidth = 38400;
@@ -11,24 +11,17 @@ const imageHeight = 12722;
 const markWidth = 20;
 const imageScale = 1.2;
 
-//地图上显示的所有不重复图标名称 such as:['vue.svg','chest.png']
-let setMark = getCurrentInstance().appContext.config.globalProperties.$setMark;
 //地图上所有标记信息，xy位置，描述等
 let markdata = getCurrentInstance().appContext.config.globalProperties.$markdata;
 //每个图标使用的图标映射表
 let markImg = getCurrentInstance().appContext.config.globalProperties.$markImg;
 //标记了已完成的图标
-// let markedMarkList = getCurrentInstance().appContext.config.globalProperties.$markedMarkList;
 const markedMarkList = inject('markedMarkList')
-//将会使用的img列表
-let iconList = {}
+//设置：默认显示的标记点小类
+let defaultShowMarkerType = getCurrentInstance().appContext.config.globalProperties.$defaultShowMarkerType;
 
-//预加载图标
-let markImages = {}
-for (let key in markImg){
-  markImages[key] = new URL(`/Shanhai9000WebMap/mark/${markImg[key]}`.replace(/\/\//g, '/'), import.meta.url).href
-}
-  //重定向图标s
+
+  //重定向图标
   let markImagesLink = {}
   for (let key in markImg){
     markImagesLink[key] = new URL(`/Shanhai9000WebMap/mark/${markImg[key]}`.replace(/\/\//g, '/'), import.meta.url).href
@@ -36,21 +29,8 @@ for (let key in markImg){
 
 
 onMounted(async ()=>{
-  //预加载图标
-  const iconPromises = Object.values(setMark).map(async (markName) => {
-    let url = new URL(`/Shanhai9000WebMap/mark/${markName}`.replace(/\/\//g, '/'), import.meta.url).href;
-    const imgLabel = await getImage(url);
-    const iconSize = [markWidth, imgLabel.height * markWidth / imgLabel.width];
-    iconList[markName] = new L.divIcon({
-      className: 'custom-icon',
-      iconSize: iconSize,
-      iconAnchor: [iconSize[1] / 2, iconSize[0] / 2],
-      popupAnchor: [(markWidth * imageScale - markWidth) / 2, -iconSize[1] / 2 * imageScale],
-      html: `<img src="${url}" alt="${markName}" id="${markName}" style="width:${markWidth * imageScale}px"/>`
-    });
-  });
-
-  await Promise.all(iconPromises);
+  // 用于保存所有 marker 及其元数据，方便后续缩放时重设 icon
+  let allMarkers = [];
 
   const crs = L.CRS.Simple;
   crs.transformation = new L.Transformation(
@@ -68,22 +48,30 @@ onMounted(async ()=>{
         maxZoom: 7,
         minZoom: 0
       }).addTo(map);
-  // map.attributionControl.setPrefix('');
   map.setView(pixtoMap([imageWidth/2,imageHeight/2]), 3)
+
   //开始渲染标记
   for (let types in markdata){
-      for (let i in markdata[types]){
-      //每个类型中的mark
+    for (let i in markdata[types]){
       for (let j=0;j<markdata[types][i].length;j++){
-        //若为true:使用自定义图标
         let has_custom_image = Object.keys(markdata[types][i][j]).indexOf('custom-image') !== -1;
+        let markName = has_custom_image ? markdata[types][i][j]['custom-image'] : markImg[i];
+        let imgLabel = await getImage(new URL(`/mark/${markName}`.replace(/\/\//g, '/'), import.meta.url).href);
+        let iconSize = [markWidth, imgLabel.height * markWidth / imgLabel.width];
+        let icon = new L.divIcon({
+          className: 'custom-icon',
+          iconSize: iconSize,
+          iconAnchor: [iconSize[1] / 2, iconSize[0] / 2],
+          popupAnchor: [(markWidth * imageScale - markWidth) / 2, -iconSize[1] / 2 * imageScale],
+          html: `<img src="${imgLabel.src}" alt="${markName}" style="width:${markWidth * imageScale}px"/>`
+        });
+
         let mark = addmark(
           [
             markdata[types][i][j]['coordinates']['x'],
             markdata[types][i][j]['coordinates']['y']
           ],
-          //处理自定义图标
-          {'icon': has_custom_image ?iconList[markdata[types][i][j]['custom-image']]:iconList[markImg[i]]},
+          { icon }
         );
         let attr = {
             belong: markdata[types][i][j]['belong'],
@@ -107,7 +95,6 @@ onMounted(async ()=>{
         const markContainer = document.createElement('div');
         const innerApp = createApp(markDescribe, attr);
         innerApp.provide('markedMarkList',markedMarkList)
-        // innerApp.config.globalProperties.$markedMarkList = markedMarkList;
         innerApp.mount(markContainer) 
         mark.bindPopup(
           markContainer,{closeButton:false,minWidth: 300, maxHeight:400}
@@ -118,16 +105,50 @@ onMounted(async ()=>{
         mark._icon.classList.add(markdata[types][i][j]['belong'].split("-")[0]+"_area");
         mark._icon.id+=('mark_'+markdata[types][i][j]['id']);
 
+        const markAddedClass = [i,markdata[types][i][j]['belong'].split("-")[0]+"_area"]
+        const markIdList = mark._icon.id
+        
+        //如果没在defaultShowMarkerType列表中的图标会被隐藏
+        if (!defaultShowMarkerType.includes(i)) 
+          mark._icon.style.display="none";
+        else 
+          mark._icon.style.display="inline";
+        allMarkers.push({
+          mark,
+          markName,
+          imgLabel,
+          markAddedClass,
+          markIdList
+        });
       }
     }
   }
-
+map.on('zoomend', function() {
+    let zoom = map.getZoom();
+    //fx = 1.1^x
+    let scale = 1.1**zoom;
+    allMarkers.forEach(({mark, markName, imgLabel,markAddedClass,markIdList}) => {
+      let iconSize = [markWidth, imgLabel.height * markWidth / imgLabel.width];
+      let icon = new L.divIcon({
+        className: 'custom-icon',
+        iconSize: iconSize,
+        iconAnchor: [iconSize[1] / 2, iconSize[0] / 2],
+        popupAnchor: [(markWidth * scale - markWidth) / 2, -iconSize[1] / 2 * scale],
+        html: `<img src="${imgLabel.src}" alt="${markName}" style="width:${markWidth * scale}px"/>`
+      });
+      console.log(markAddedClass,markIdList)
+      mark.setIcon(icon);
+      mark._icon.classList.add(...markAddedClass);
+      mark._icon.id = markIdList;
+    });
+  });
+  
   //四极定位
   // L.marker(pixtoMap([0,0])).addTo(map);
   // L.marker(pixtoMap([0,12722])).addTo(map);
   // L.marker(pixtoMap([38400,0])).addTo(map);
   // L.marker(pixtoMap([38400,12722])).addTo(map);
-})
+});
 </script>
 
 <template>

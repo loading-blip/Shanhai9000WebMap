@@ -1,5 +1,4 @@
 import {pixtoMap} from './unitConversion.js';
-import L from 'leaflet';
 
 /**
  * 
@@ -35,7 +34,49 @@ export function getImage(url) {
     });
 }
 
+/**
+ * 
+ * @param {String} className 标记点小类的DOM类
+ * @returns {void}
+ */
+export function hiddenAndShowMark(className){
+    
+    let marks = document.getElementsByClassName(className);
+    if (marks.length==0){return}
+    for(let markIndex=0;markIndex<marks.length;markIndex++){  
+        marks[markIndex].style.display = marks[markIndex].style.display==='none'?'block':'none';
+    }
+}
+/**
+ * 
+ * @param {list} defaultList 默认显示的marker小类
+ * @returns {void}
+ */
+export function resetToDefaultMarker(defaultList){
+    let markerList = document.getElementsByClassName('leaflet-marker-icon');
+    for (let i of markerList){
+        for(let j of defaultList){
+            if (i.classList.contains(j)){
+                i.style.display='inline';
+            }
+            else{
+                i.style.display='none';
+            }
+        }
+        
+    }
+}
 
+/**
+ * 
+ * @returns {void}
+ */
+export function showAllMarker(){
+    let markerList = document.getElementsByClassName('leaflet-marker-icon');
+    for (let i of markerList){
+        i.style.display='inline';
+    }
+}
 /**
  * 
  * @param {list} markdata 标记点位置

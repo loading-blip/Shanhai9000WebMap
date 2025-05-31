@@ -1,6 +1,6 @@
 # Shanhai 9000 Web Map
 
-![Version](https://img.shields.io/badge/version-0.1.2-blue) | 地图收集进度 (15/37) ![Progress](https://geps.dev/progress/40)
+![Version](https://img.shields.io/badge/version-0.1.3-blue) | 地图收集进度 (15/37) ![Progress](https://geps.dev/progress/40)
 
 [English](README_en.md) |  Chinese(CN)
 
@@ -10,15 +10,13 @@
 
 ## 功能
 
-~~隐藏一类图标(该有的功能)~~
-
-单独淡化(隐藏)一个图标
-
-淡化后可在控制面板中查看收集进度
-
-侧拉式控制面板
-
-其他功能正在开发(尤其新手引导)
+- ~~隐藏一类图标(该有的功能)~~
+- 单独淡化(隐藏)一个图标
+- 淡化后可在控制面板中查看收集进度
+- 侧拉式控制面板
+- 一键重置/显示示的标记
+- 图标现在可以随着地图变化而变大了
+- 其他功能正在开发(尤其新手引导)
 
 ## 此些地图将会收集
 
@@ -55,7 +53,7 @@
 `v0.1.0-video.mp4`
 [file](image/v0.1.0-video.mp4)
 
-`v0.1.2.png`
+`v0.1.3.png`
 ![img](image/v0.1.2.png)
 
 ## 当前计划
@@ -68,8 +66,9 @@
 - [ ] **增加向导**
 - [ ] 本地化界面
 - [ ] 英文本地化界面
-- [ ] 动态放大缩小图标
-- [ ] 增加一键隐藏按钮
+- [X] 动态放大缩小图标
+- [X] 增加一键隐藏按钮
+- [ ] 增加设置窗口
 - [ ] 其他计划
 
 Note:
