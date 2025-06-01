@@ -322,23 +322,6 @@ RootNodes:
       y: 11106
     description: "古树节点"
 
-  - belong: A2
-    coordinates:
-      x: 13504
-      y: 10529
-    description: "古树节点"
-
-  - belong: A2
-    coordinates:
-      x: 13504
-      y: 10529
-    description: "古树节点"
-
-  - belong: A2
-    coordinates:
-      x: 13504
-      y: 10529
-    description: "古树节点"
   - belong: A7
     coordinates:
       x: 17965
