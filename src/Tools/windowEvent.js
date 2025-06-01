@@ -88,3 +88,62 @@ export function ShowControlPanel(element,mask,status,elementWidth) {
     mask.style.display = 'none';
     element.style.left = `${-elementWidth}px`;
 }
+
+/**
+ * 
+ * @returns {number} 最高z-index 
+ * @description 获取最该z-index数字
+ */
+export function getHighestZIndexOptimized() {
+  const elements = document.querySelectorAll('body *');
+  let maxZ = 0;
+  
+  elements.forEach(el => {
+    const style = window.getComputedStyle(el);
+    // 只检查定位元素(position不为static)和可见元素
+    if (style.position !== 'static' && style.display !== 'none' && style.visibility !== 'hidden') {
+      const zIndex = parseInt(style.zIndex);
+      if (!isNaN(zIndex)) {
+        maxZ = Math.max(maxZ, zIndex);
+      }
+    }
+  });
+  
+  return maxZ === 0 ? 'auto或未设置' : maxZ;
+}
+
+/**
+ * 注册窗口拖拽事件
+ * @param {HTMLElement} draggableHandles - 拖拽手柄
+ */
+export function RegDraggableHandle(draggableHandles){
+    let currentContainer, offsetX, offsetY;
+
+    function startDrag(e) {
+        currentContainer = draggableHandles.parentElement;
+        offsetX = (e.clientX || e.touches[0].clientX) - currentContainer.offsetLeft;
+        offsetY = (e.clientY || e.touches[0].clientY) - currentContainer.offsetTop;
+        document.body.style.userSelect = 'none'; // Prevent text selection
+
+        function onMove(e) {
+            currentContainer.style.left = `${(e.clientX || e.touches[0].clientX) - offsetX}px`;
+            currentContainer.style.top = `${(e.clientY || e.touches[0].clientY) - offsetY}px`;
+        }
+
+        function stopDrag() {
+            document.removeEventListener('mousemove', onMove);
+            document.removeEventListener('mouseup', stopDrag);
+            document.removeEventListener('touchmove', onMove);
+            document.removeEventListener('touchend', stopDrag);
+            document.body.style.userSelect = '';
+        }
+
+        document.addEventListener('mousemove', onMove);
+        document.addEventListener('mouseup', stopDrag);
+        document.addEventListener('touchmove', onMove);
+        document.addEventListener('touchend', stopDrag);
+    }
+
+    draggableHandles.addEventListener('mousedown', startDrag,{ passive: true });
+    draggableHandles.addEventListener('touchstart', startDrag,{ passive: true });
+}

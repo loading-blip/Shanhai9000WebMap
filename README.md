@@ -1,6 +1,6 @@
 # Shanhai 9000 Web Map
 
-![Version](https://img.shields.io/badge/version-0.1.3-blue) | 地图收集进度 (15/37) ![Progress](https://geps.dev/progress/40)
+![Version](https://img.shields.io/badge/version-0.2-blue) | 地图收集进度 (15/37) ![Progress](https://geps.dev/progress/40)
 
 [English](README_en.md) |  Chinese(CN)
 
@@ -11,12 +11,15 @@
 ## 功能
 
 - ~~隐藏一类图标(该有的功能)~~
-- 单独淡化(隐藏)一个图标
-- 淡化后可在控制面板中查看收集进度
+- 单独标记(隐藏)一个图标
+- 单独标记后可在控制面板中查看收集进度
 - 侧拉式控制面板
-- 一键重置/显示示的标记
-- 图标现在可以随着地图变化而变大了
+- 一键重置/显示标记点
+- 图标可以随着地图变化而变大
+- 记忆已标记的存储点
+- 设置窗口可重置标记进度
 - 其他功能正在开发(尤其新手引导)
+
 
 ## 此些地图将会收集
 
@@ -46,7 +49,8 @@
 
 ## For User
 
-恭喜，不需要过多繁琐操作，**但当前没有发布任何release版本**
+恭喜，不需要过多繁琐操作
+[点击此处](https://loading-blip.github.io/Shanhai9000WebMap/)访问Demo版本
 
 ## Demo
 
@@ -62,13 +66,12 @@
 - [ ] 获取图标ui
 - [ ] 清理代码qwq
 - [X] 可以单独隐藏一个图标，并且存储以下次打开 ^1^
-- [ ] 可能会增加css动画
 - [ ] **增加向导**
 - [ ] 本地化界面
 - [ ] 英文本地化界面
 - [X] 动态放大缩小图标
 - [X] 增加一键隐藏按钮
-- [ ] 增加设置窗口
+- [X] 增加设置窗口
 - [ ] 其他计划
 
 Note:

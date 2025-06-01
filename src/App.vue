@@ -4,9 +4,10 @@ import LeafletMap from './components/LeafLetMap.vue';
 import ControlPannel from './components/controlPannel.vue';
 import {DivDraggable} from './tools/windowEvent.js';
 import 'bootstrap/dist/css/bootstrap.css';
+import settingWindow from './components/settingWindow.vue'
 
 onMounted(() => {
-  let versionBar = document.getElementById('versionBar');
+  let versionBar = document.getElementById('version_bar');
   DivDraggable(versionBar);
 });
 </script>
@@ -14,19 +15,20 @@ onMounted(() => {
 <template>
   <LeafletMap />
   <ControlPannel />
-    <div id="versionBar">
+    <div class="inner_window" id="version_bar">
       <div class="close_btn" @click="closeVersionBar()">
         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x" viewBox="0 0 17.5 17.5">
           <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
         </svg>
       </div>
-      <p>Preview version 0.1.3</p>
+      <p>Preview version 0.2</p>
       <p>Map collection progress (15/37)</p>
       <p><a href="https://github.com/loading-blip/Shanhai9000WebMap/" target="_blank">GitHub</a></p>
       <div class="progress" role="progres sbar" aria-label="Animated striped example" aria-valuenow="7.4" aria-valuemin="0" aria-valuemax="100">
         <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 40.54%"></div>
       </div>
     </div>
+    <settingWindow />
 </template>
 
 <script>
@@ -38,7 +40,7 @@ onMounted(() => {
   },
   methods: {
     closeVersionBar() {
-      const versionBar = document.getElementById('versionBar');
+      const versionBar = document.getElementById('version_bar');
       versionBar.style.display = 'none';
     }
   }
@@ -46,18 +48,14 @@ onMounted(() => {
 </script>
 
 <style lang="scss">
+$border-color: #a09255;
+$border-size: 5px;
 #app {
   width: 100%;  
   height: 100%;
 
 }
-#versionBar{
-  z-index: 999;
-  $border-color: #a09255;
-  $border-size: 5px;
-  position: absolute;
-  left: 50%;
-  top: 60%; 
+.inner_window{
   background: 
     linear-gradient(to bottom,$border-color 0px,$border-color $border-size,transparent 3px,transparent 100%) left top no-repeat,
     linear-gradient(to right,$border-color 0px,$border-color $border-size,transparent 3px,transparent 100%) left top no-repeat,
@@ -73,9 +71,6 @@ onMounted(() => {
     linear-gradient(to bottom,$border-color 0px,$border-color $border-size,transparent 3px,transparent 100%) top center no-repeat,
     #24282e;
   background-size: 2.5rem 1.5rem;
-  color: #d6d6d6;
-  padding: 20px;
-  text-align: center;
   cursor: grab;
   .close_btn{
     position: absolute;
@@ -85,6 +80,15 @@ onMounted(() => {
     width: 20px;
     height: 20px;
   }
+}
+#version_bar{
+  z-index: 999;
+  position: absolute;
+  left: 50%;
+  top: 60%; 
+  color: #d6d6d6;
+  padding: 20px;
+  text-align: center;
 }
 html, body {
   margin: 0;

@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted,getCurrentInstance,inject } from 'vue';
 import mark_json from '../assets/location/json/mark.json'
-import {ShowControlPanel} from '../Tools/windowEvent.js';
+import {ShowControlPanel,getHighestZIndexOptimized} from '../Tools/windowEvent.js';
 import { getHideMarkerQuantity,hiddenAndShowMark,resetToDefaultMarker,showAllMarker } from '../Tools/markTools.js';
 
 //地图上所有标记信息，xy位置，描述等
@@ -81,6 +81,12 @@ onMounted(()=>{
 
 function resetMarker(x=''){resetToDefaultMarker(x?[]:defaultShowMarkerType);}
 
+function openSettingWindow(){
+    const window = document.getElementById('setting_window');
+    window.style.display = "block";
+    window.style.zIndex = getHighestZIndexOptimized()+1;
+}
+
 </script>
 
 
@@ -92,7 +98,7 @@ function resetMarker(x=''){resetToDefaultMarker(x?[]:defaultShowMarkerType);}
                 <ul>
                     <li v-for="(info,lKinds) in kinds" @click="hiddenAndShowMark(lKinds)">
                         <img :src="info[0]" :alt="lKinds">
-                        <a>{{ getHideMarkerQuantity(lKinds,markedMarkList,markIdRange) }} / {{ info[1] }}</a>&nbsp;
+                        <a>{{ getHideMarkerQuantity(lKinds,markedMarkList['id'],markIdRange) }} / {{ info[1] }}</a>&nbsp;
                         <a>{{ lKinds }}</a>
                     </li>
                 </ul>
@@ -105,6 +111,7 @@ function resetMarker(x=''){resetToDefaultMarker(x?[]:defaultShowMarkerType);}
         <div class="button_div">
             <button id="reset_display_marker" @click="resetMarker()"><a>恢复默认</a></button>
             <button id="show_all_marker" @click="showAllMarker()"><a>全部显示</a></button>
+            <button id="open_setting_window" @click="openSettingWindow()"><a>打开设置</a></button>
         </div>
         
     </div>
@@ -152,6 +159,11 @@ $background-color: #24282e;
     #show_all_marker{
         position: absolute;
         right: 50px + $button-width + $button-margin;
+        bottom: 30px;
+    }
+    #open_setting_window{
+        position: absolute;
+        right: 50px + $button-width * 2 + $button-margin * 2;
         bottom: 30px;
     }
 }
