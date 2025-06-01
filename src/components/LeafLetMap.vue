@@ -21,11 +21,11 @@ const markedMarkList = inject('markedMarkList')
 let defaultShowMarkerType = getCurrentInstance().appContext.config.globalProperties.$defaultShowMarkerType;
 
 
-  //重定向图标
-  let markImagesLink = {}
-  for (let key in markImg){
-    markImagesLink[key] = new URL(`/mark/${markImg[key]}`.replace(/\/\//g, '/'), import.meta.url).href
-  }
+//重定向图标
+let markImagesLink = {}
+for (let key in markImg){
+  markImagesLink[key] = new URL(`/mark/${markImg[key]}`.replace(/\/\//g, '/'), import.meta.url).href
+}
 
 
 onMounted(async ()=>{
@@ -112,11 +112,15 @@ onMounted(async ()=>{
     const markAddedClass = [i, data['belong'].split("-")[0] + "_area"];
     const markIdList = mark._icon.id;
 
-    //如果没在defaultShowMarkerType列表中的图标会被隐藏
+    //没在defaultShowMarkerType列表中的图标会被隐藏
     if (!defaultShowMarkerType.includes(i))
       mark._icon.style.display = "none";
     else
       mark._icon.style.display = "inline";
+    //在markedMarkList列表中的图标会被降低透明度
+    if (markedMarkList['id'].indexOf(data['id'])!==-1){
+      mark._icon.style.opacity = 0.3;
+    }
     allMarkers.push({
       mark,
       markName,

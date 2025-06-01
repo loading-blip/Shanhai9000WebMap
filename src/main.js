@@ -6,10 +6,9 @@ import enemy_json from './assets/location/json/enemy.json'
 import mark_json from './assets/location/json/mark.json'
 import Yi_json from './assets/location/json/Yi.json'
 import submittedItem_json from './assets/location/json/submittedItem.json'
+import Cookies from 'js-cookie';
 
-import 'bootstrap'
-// python gdal2tiles,pyyaml
-//
+
 const markdata = {
     "enemy": enemy_json,
     "explore": explore_json,
@@ -23,7 +22,7 @@ let setMark = [];
 //遍历每个种类id范围 [min1,typename1,min2,typename2，...]
 let markIdRange = [];
 //已标记标记点
-const markedMarkList = reactive({})
+const markedMarkList = reactive({id:Cookies.get('markedMarker')?Cookies.get('markedMarker').split(',').map(Number):[]})
 //设置：默认显示的标记点小类
 const defaultShowMarkerType = ['RootNodes']
 
@@ -62,7 +61,7 @@ console.log('All markers',markImg)
 console.log('unique marker img',setMark)
 console.log('marker id range',markIdRange)
 console.log('default show marker type',defaultShowMarkerType)
-
+console.log('Cookie marked id',markedMarkList['id'])
 
 const app = createApp(App)
 app.config.globalProperties.$setMark = setMark

@@ -102,7 +102,7 @@ export function getHideMarkerQuantity(markType,markedMarkList,markIdRange){
         throw new Error(`${markType} not in markIdRange`)
     }
     let count = 0;
-    for(let i in markedMarkList)
+    for(let i of markedMarkList)
     {
         i=parseInt(i);
         if (markIdRange[markTypeIndex-1]<=i && i<markIdRange[markTypeIndex+1]){

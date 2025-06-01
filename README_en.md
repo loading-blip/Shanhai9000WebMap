@@ -1,6 +1,6 @@
 # Shanhai 9000 Web Map
 
-![Version](https://img.shields.io/badge/version-0.1.3-blue) | Map collection progress (15/37) ![Progress](https://geps.dev/progress/40)
+![Version](https://img.shields.io/badge/version-0.2-blue) | Map collection progress (15/37) ![Progress](https://geps.dev/progress/40)
 
 English | [Chinese(CN)](README.md)
 
@@ -10,12 +10,14 @@ Like other web game maps, it can choose to hide markers.
 
 ## Functions
 
-- ~~Hide a type of icon (the necessary function)~~
-- Individually fade (hide) an icon
-- After fading, the collection progress can be viewed in the control panel
+-~~Hide a type of icon (the necessary function)~~
+- Mark (hide) an icon separately
+- After being individually marked, the collection progress can be viewed in the control panel
 - Side pull control panel
-- One-click to reset/display of displayed markers
-- The icon can now become larger as the map changes
+- One click reset/display marker points
+- Icons can become larger as the map changes
+- Memory marked storage points
+- Setting window to reset marker progress
 - Other features are under development (especially beginner guidance)
 
 This map will collect:
@@ -48,7 +50,9 @@ Currently, updates regarding map markers have been moved to the `Map making` bra
 
 ## For User
 
-Congratulations! Jump to Releases page download. **(There are currently no releases available)**
+Congratulations!
+
+[Click here](https://loading-blip.github.io/Shanhai9000WebMap/) to access the demo version
 
 ## Demo
 
@@ -64,12 +68,11 @@ Congratulations! Jump to Releases page download. **(There are currently no relea
 - [ ] Make icon for each marker
 - [ ] Clean up program Code
 - [X] Can hide individual tags and use cookies to store hidden tags ^1^
-- [ ] Perhaps CSS animations will be added
 - [ ] Localized Chinese(ZH_CN&ZH_TW) interface
 - [ ] Localized English interface
 - [X] Dynamic zoom in/out icon
 - [X] Add a one-click hide button
-- [ ] Add settings window
+- [X] Add settings window
 - [ ] **Add Wizard**
 - [ ] etc...
 

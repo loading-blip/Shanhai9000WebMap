@@ -1,6 +1,6 @@
 <script setup>
 import { inject} from 'vue';
-
+import Cookies from 'js-cookie';
 const props = defineProps({
     id: {
         type: Number,
@@ -44,13 +44,15 @@ const props = defineProps({
 const markedMarkList = inject('markedMarkList')
 
 function hideMark(id) {
-    if (Object.keys(markedMarkList).indexOf(String(id)) !== -1) {
-        delete markedMarkList[id];
+    if (markedMarkList['id'].indexOf(id)!==-1) {
+        markedMarkList['id'] = markedMarkList['id'].filter(item => item !== id);
         document.getElementById('mark_' + id).style.opacity = 1;
+        Cookies.set('markedMarker',markedMarkList['id'])
         return;
     }
     document.getElementById('mark_' + id).style.opacity = 0.3;
-    markedMarkList[id] = true;
+    markedMarkList['id'].push(id);
+    Cookies.set('markedMarker',markedMarkList['id'])
 }
 </script>
 
@@ -59,7 +61,7 @@ function hideMark(id) {
         <img :src="markURL" :alt="markURL" style="width:40px" class="marker_logo"/>
         <div class="popup_attr">
             <p class="belong_p"><b>所属</b>&nbsp;<a>{{ belong }}</a></p>
-            <p class="mark_xy_p"><span>X </span>{{ coordinates[0] }}&nbsp;<span>Y&nbsp;</span>{{ coordinates[0] }}</p>
+            <p class="mark_xy_p"><span>X </span>{{ coordinates[0] }}&nbsp;<span>Y&nbsp;</span>{{ coordinates[1] }}</p>
         </div>
         <div class="mark_attribute">
             
